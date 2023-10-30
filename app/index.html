@@ -11,27 +11,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <!-- Main chatbox container -->
-  <div id="chatbox">
-    <!-- Messages will be appended here -->
-    <div id="messages"></div>
-    <!-- Date picker container -->
-    <div id="datePickerContainer" style="display: none;">
-      <label for="datePicker">Pick a Date:</label>
-      <input type="date" id="datePicker">
+  <main id="mobileScreenContainer">
+    <section id="scrollContainer">
+      <!-- Main chatbox container -->
+      <div id="chatbox">
+        <!-- Messages will be appended here -->
+        <div id="messages"></div>
+        <!-- Date picker container -->
+        <div id="datePickerContainer" style="display: none;">
+          <label for="datePicker">Pick a Date:</label>
+          <input type="date" id="datePicker">
+        </div>
+        <!-- Input area for typing messages -->
+        <div id="inputArea">
+          <input type="text" id="userInput" placeholder="Type your message...">
+          <button id="sendButton"><i class="fas fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom navigation -->
+    <div id="bottomNav">
+      <button>Home</button>
+      <button>Plan</button>
+      <button>Weather</button>
     </div>
-    <!-- Input area for typing messages -->
-    <div id="inputArea">
-      <input type="text" id="userInput" placeholder="Type your message...">
-      <button id="sendButton"><i class="fas fa-paper-plane"></i></button>
-    </div>
-  </div>
-  <!-- Bottom navigation -->
-  <div id="bottomNav">
-    <button>Home</button>
-    <button>Plan</button>
-    <button>Weather</button>
-  </div>
+  </main>
+
   <!-- Include main JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="main.js"></script>

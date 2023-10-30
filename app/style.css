@@ -1,9 +1,40 @@
+/* Design variables */
+:root {
+  --mobile-width: 390px;
+  --mobile-height: 844px;
+  --bottom-nav-height: 64px;
+}
+
 /* General body styles */
 body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: #303030;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style for mobile screen container */
+#mobileScreenContainer {
+  position: relative;
+
+  width: var(--mobile-width);
+  height: var(--mobile-height);
+  overflow: hidden;
+  
+  background-color: #fff;
+}
+
+#scrollContainer {
+  height: calc(var(--mobile-height) - var(--bottom-nav-height) - 12px);
+  overflow: auto;
 }
 
 /* Style for chatbox */
@@ -11,7 +42,6 @@ body {
   width: 100%;
   max-width: 400px;
   margin: auto;
-  border: 1px solid #ccc;
 }
 
 /* Style for messages container */
@@ -49,10 +79,15 @@ button {
 
 /* Style for bottom navigation */
 #bottomNav {
+  position: absolute;
+  bottom: 0;
+
+  width: var(--mobile-width);
+  height: var(--bottom-nav-height);
+
   display: flex;
   justify-content: space-around;
   background-color: #ccc;
-  padding: 10px;
 }
 
 /* Style for bot messages */
