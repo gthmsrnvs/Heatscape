@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Chatbot UI</title>
+  <title>Home Page - HeatScape</title>
   <!-- Include CSS -->
   <link rel="stylesheet" href="style.css">
   <!-- Include Font Awesome for icons -->
@@ -14,18 +14,22 @@
   <main id="mobileScreenContainer">
     <section id="scrollContainer">
       <!-- Main chatbox container -->
-      <div id="chatbox">
-        <!-- Messages will be appended here -->
-        <div id="messages"></div>
-        <!-- Date picker container -->
-        <div id="datePickerContainer" style="display: none;">
-          <label for="datePicker">Pick a Date:</label>
-          <input type="date" id="datePicker">
+      <div id="homeContainer">
+      </div>
+
+      <div id="weatherContainer">
+        <div id="weatherDateContainer">
+          <button class="weatherDateButton"> : </button>
+          <p id="weatherSelectedDate">Wednesday, 11 October 2023</p>
+          <button class="weatherDateButton"> : </button>
         </div>
-        <!-- Input area for typing messages -->
-        <div id="inputArea">
-          <input type="text" id="userInput" placeholder="Type your message...">
-          <button id="sendButton"><i class="fas fa-paper-plane"></i></button>
+        <div id="weatherHourlyContainer">
+          <div class="weatherHourlyPills">
+            <p class="weatherHourlyTime">NOW</p>
+            <div class="weatherHourlyIcon"><svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none"><path d="M15.1667 6.66668V1.33334H17.8334V6.66668H15.1667ZM24.0334 10.3333L22.2 8.50001L25.9334 4.66668L27.8 6.56668L24.0334 10.3333ZM25.8334 17.3333V14.6667H31.1667V17.3333H25.8334ZM15.1667 30.6667V25.3333H17.8334V30.6667H15.1667ZM8.96671 10.2667L5.16671 6.56668L7.06671 4.70001L10.8334 8.46668L8.96671 10.2667ZM25.9 27.3333L22.2 23.5L24 21.7L27.8 25.3667L25.9 27.3333ZM1.83337 17.3333V14.6667H7.16671V17.3333H1.83337ZM7.06671 27.3333L5.20004 25.4333L8.93337 21.7L9.90004 22.6L10.8667 23.5333L7.06671 27.3333ZM16.5 24C14.2778 24 12.3889 23.2222 10.8334 21.6667C9.27782 20.1111 8.50004 18.2222 8.50004 16C8.50004 13.7778 9.27782 11.8889 10.8334 10.3333C12.3889 8.77779 14.2778 8.00001 16.5 8.00001C18.7223 8.00001 20.6112 8.77779 22.1667 10.3333C23.7223 11.8889 24.5 13.7778 24.5 16C24.5 18.2222 23.7223 20.1111 22.1667 21.6667C20.6112 23.2222 18.7223 24 16.5 24Z" fill="white"/></svg></div>
+            <p class="weatherHourlyRain">5%</p>
+            <p class="weatherHourlyTemperature">29°</p>
+          </div>
         </div>
       </div>
     </section>

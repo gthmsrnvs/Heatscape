@@ -130,3 +130,14 @@ button {
   font-weight: 900; 
   margin-left: 5px;
 }
+
+#weatherContainer {
+  display: flex;
+  flex-direction: column; 
+}
+
+#weatherDateContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
