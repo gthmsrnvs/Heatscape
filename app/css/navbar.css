@@ -2,11 +2,29 @@ nav {
     width: var(--mobile-width);
     display: flex;
     justify-content: space-around;
-    background-color: var(--dark);
+    background-color: var(--light);
+
+    position: fixed;
+    bottom: 0;
+
+    border-top: 1px solid var(--light-grey);
 }
 
-nav a {
-    color: var(--light);
+.navbarItem {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 1rem 0;
+
+    color: var(--dark);
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 10pt;
+}
+
+.navbarItem > i {
+    font-size: 20pt;
+    margin-bottom: 1rem;
 }
