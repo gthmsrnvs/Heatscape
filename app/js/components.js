@@ -7,4 +7,4 @@ navbar.innerHTML = `
 <button>Weather</button>
 `
 
-console.log(navContainer)
+console.log(navContainer);
