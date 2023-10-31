@@ -10,6 +10,10 @@ nav {
     border-top: 1px solid var(--light-grey);
 }
 
+#activeItem {
+    color: var(--primary);
+}
+
 .navbarItem {
     display: flex;
 
@@ -22,9 +26,15 @@ nav {
     color: var(--dark);
     text-decoration: none;
     font-size: 10pt;
+
+    transition: ease-in-out 200ms;
+}
+
+.navbarItem:active {
+    color: var(--primary);
 }
 
 .navbarItem > i {
     font-size: 20pt;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }

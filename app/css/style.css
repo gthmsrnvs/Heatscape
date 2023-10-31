@@ -16,6 +16,8 @@
   --low-risk-bg: linear-gradient(#F6D86E, #EDB13C);
   --high-risk-bg: linear-gradient(#E65C53, #F7A366);
 
+  --primary: #F45E49;
+
   --weather-card-width: 160px;
 }
 
