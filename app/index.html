@@ -16,6 +16,9 @@
       <!-- Main chatbox container -->
       <div id="homeContainer">
         <button id="connectButton">Connect to ESP32</button>
+        <h1 id="temperatureValue">Temperature: <span id="tempValue">0</span></h1>
+        <!-- Add the canvas for the Chart.js line chart -->
+        <canvas id="temperatureChart" width="400" height="200"></canvas>
       </div>
       
       <div id="weatherContainer">
@@ -45,6 +48,7 @@
 
   <!-- Include main JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/home.js"></script>
 </body>
 </html>

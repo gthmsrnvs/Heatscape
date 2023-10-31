@@ -6,6 +6,9 @@ function handleTemperatureChange(event) {
   console.log(`Received ${tempAsFloat}`);
 }
 
+// Add an event listener to connect and start receiving data when the button is clicked
+document.getElementById('connectButton').addEventListener('click', connectAndReceiveData);
+
 // Function to connect to the device and start receiving data
 function connectAndReceiveData() {
   navigator.bluetooth
@@ -37,8 +40,5 @@ function connectAndReceiveData() {
       console.log('Error:', error);
     });
 }
-
-// Add an event listener to connect and start receiving data when the button is clicked
-document.getElementById('connectButton').addEventListener('click', connectAndReceiveData);
 
 
