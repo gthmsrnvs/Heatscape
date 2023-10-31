@@ -1,0 +1,12 @@
+nav {
+    width: var(--mobile-width);
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--dark);
+}
+
+nav a {
+    color: var(--light);
+    text-decoration: none;
+    font-size: 2rem;
+}
