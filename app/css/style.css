@@ -15,6 +15,54 @@
   --normal-bg: linear-gradient(#71F5CD, #37CBDF);
   --low-risk-bg: linear-gradient(#F6D86E, #EDB13C);
   --high-risk-bg: linear-gradient(#E65C53, #F7A366);
+
+  --weather-card-width: 160px;
+}
+
+/* Reset css styles */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 /* General body styles */
@@ -146,10 +194,95 @@ button {
 #weatherContainer {
   display: flex;
   flex-direction: column; 
+  gap: 24px;
 }
 
 #weatherDateContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#weatherHourlyContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.weatherHourlyPills {
+  background-color: var(--warning-good);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 100vh;
+  color: white;
+}
+
+.weatherHourlyPillInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 12px;
+}
+
+#weatherHeatIndexContainer {
+  background-color: var(--warning-good);
+}
+
+#weatherHeatIndexInner {
+  display: flex;
+  flex-direction: column;
+  
+  padding: 4px 36px 16px;
+}
+
+#weatherCardsContainer {
+  width: 90%;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 50% 50%;
+  row-gap: 16px;
+}
+
+.weatherCardContainer {
+  width: var(--weather-card-width);
+  height: var(--weather-card-width);
+  border-radius: 16px;
+
+  margin: auto;
+}
+
+.weatherCardContainer.normal {
+  background: linear-gradient(180deg, #2C8025 0%, #075001 100%);
+}
+
+.weatherCardContainer.caution {
+  background: linear-gradient(180deg, #AC5D24 0%, #502701 100%);
+}
+
+.weatherCardContainer.danger {
+  background: linear-gradient(180deg, #B70000 0%, #500101 100%);
+}
+
+.weatherCardInner {
+  display: flex;
+  flex-direction: column;
+  
+  padding: 8px;
+  color: white;
+}
+
+.weatherCardTop {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.weatherCardTitle {
+  text-transform: uppercase;
+
+  font-size: 14px;
 }
