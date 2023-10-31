@@ -1,3 +1,4 @@
+//CHATBOT UI
 // Replace this placeholder with your OpenAI API key
 const openAiApiKey = "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";
 
