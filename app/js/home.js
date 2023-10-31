@@ -1,9 +1,16 @@
+import { Chart } from 'chart.js';
+
 // Function to handle temperature change
 function handleTemperatureChange(event) {
   const value = event.target.value;
   const tempAsFloat = value.getFloat32(0, true); // read as little-endian
   console.log(`Received ${tempAsFloat}`);
+  
+  // Update the temperature value in the <h1> element
+  const temperatureValueElement = document.getElementById('temperatureValue');
+  temperatureValueElement.innerText = `Temperature: ${tempAsFloat} °C`;
 }
+
 
 // Function to connect to the device and start receiving data
 function connectAndReceiveData() {
