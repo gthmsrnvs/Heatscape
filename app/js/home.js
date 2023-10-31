@@ -1,31 +1,43 @@
 import Chart from 'chart.js/auto';
 import 'chartjs-adapter-date-fns';
 
-// Initialize the Chart.js chart
+// Initialize the chart
 const ctx = document.getElementById('temperatureChart').getContext('2d');
 const temperatureChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: [],
+    labels: [], // Will be populated in real-time
     datasets: [{
-      label: 'Temperature',
-      data: [],
+      label: 'Temperature in Celsius',
+      data: [], // Will be populated in real-time
       borderColor: 'rgba(75, 192, 192, 1)',
       borderWidth: 1,
-      fill: false
-    }]
+      fill: false,
+    }],
   },
   options: {
     scales: {
       x: {
         type: 'time',
         time: {
-          unit: 'second'
+          unit: 'hour',
+          displayFormats: {
+            hour: 'HH:mm'
+          }
+        },
+        title: {
+          display: true,
+          text: 'Time'
         }
       },
       y: {
-        min: 0,
-        max: 100
+        type: 'linear',
+        min: 10,
+        max: 30,
+        title: {
+          display: true,
+          text: 'Temperature (°C)'
+        }
       }
     }
   }
