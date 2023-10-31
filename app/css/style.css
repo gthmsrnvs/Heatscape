@@ -19,6 +19,7 @@
   --primary: #F45E49;
 
   --weather-card-width: 160px;
+  --weather-severity-hori: linear-gradient(270deg, #70FF00 0%, #F00 100%);
 }
 
 /* Reset css styles */
@@ -82,6 +83,11 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.hideScroll::-webkit-scrollbar {
+	width: 0px;
+	height: 0px;
+} 
 
 /* Style for mobile screen container */
 #mobileScreenContainer {
@@ -206,6 +212,14 @@ button {
 }
 
 #weatherHourlyContainer {
+  width: 95%;
+  margin: auto;
+
+  overflow-x: scroll;
+}
+
+#weatherHourlyInner {
+  padding: 0 12px 12px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -225,24 +239,41 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 8px;
 
-  padding: 12px;
+  padding: 24px 12px;
 }
 
 #weatherHeatIndexContainer {
-  background-color: var(--warning-good);
+  background-color: var(--warning-caution);
 }
 
 #weatherHeatIndexInner {
   display: flex;
   flex-direction: column;
+  gap: 12px;
   
-  padding: 4px 36px 16px;
+  padding: 16px 36px;
+
+  color: white;
+}
+
+#heatIndexBottom > p {
+  display: inline;
+  padding-right: 4px;
+
+  font-size: 32px;
+  font-weight: 500;
+}
+
+#heatIndexBottom > span {
+  display: inline;
+  opacity: 0.5;
 }
 
 #weatherCardsContainer {
   width: 90%;
-  margin: auto;
+  margin: 0 auto 24px;
 
   display: grid;
   grid-template-columns: 50% 50%;
@@ -273,7 +304,7 @@ button {
   display: flex;
   flex-direction: column;
   
-  padding: 8px;
+  padding: 12px;
   color: white;
 }
 
@@ -283,8 +314,46 @@ button {
   gap: 4px;
 }
 
+.weatherCardTop > i {
+  padding-left: 4px;
+
+  font-size: 24px;
+}
+
 .weatherCardTitle {
   text-transform: uppercase;
 
   font-size: 14px;
+  padding-bottom: 4px;
+}
+
+.weatherCardBottom {
+  padding-top: 12px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+.weatherCardBottom > h1 {
+  font-size: 36px;
+}
+
+.weatherCardBottom > h2 {
+  font-size: 28px;
+}
+
+.weatherCardBottom > h3 {
+  font-size: 20px;
+}
+
+.weatherCardBottom > h4 {
+  font-size: 16px;
+}
+
+.weatherCardBottom > p {
+  font-size: 10px;
+  color: var(--light-grey);
 }
