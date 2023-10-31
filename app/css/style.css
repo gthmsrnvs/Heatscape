@@ -3,6 +3,18 @@
   --mobile-width: 390px;
   --mobile-height: 844px;
   --bottom-nav-height: 64px;
+
+  --light: #FDFDFD;
+  --light-grey: #E6E6E6;
+  --dark: #151515;
+  --dark-grey: #606060;
+  --warning-good: #ADD66B;
+  --warning-caution: #F7B171;
+  --warning-bad: #CD5B5B;
+
+  --normal-bg: linear-gradient(#71F5CD, #37CBDF);
+  --low-risk-bg: linear-gradient(#F6D86E, #EDB13C);
+  --high-risk-bg: linear-gradient(#E65C53, #F7A366);
 }
 
 /* General body styles */
