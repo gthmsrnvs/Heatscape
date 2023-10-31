@@ -85,3 +85,4 @@ function addUserMessage(text) {
   messagesDiv.appendChild(message);
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
+
