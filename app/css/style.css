@@ -199,53 +199,121 @@ button {
   margin-left: 5px;
 }
 
+
+
+
+
+
+/* Weather part */
 #weatherContainer {
   display: flex;
   flex-direction: column; 
   gap: 24px;
+
+  margin-top: 36px;
+
+  background-image: url("/images/sunny.png");
+  background-repeat: no-repeat;
+
+  max-height: 600px;
+  overflow-y: scroll;
+
+  transition: all 0.5s ease;
 }
 
 #weatherDateContainer {
+  position: sticky;
+  top: 0;
+
+  background-color: var(--dark-grey);
+  color: white;
+  
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: 12px;
+  z-index: 9999;
 }
 
 #weatherHourlyContainer {
+  scroll-behavior: smooth;
+  
+  position: relative;
+  min-height: 155px;
   width: 95%;
   margin: auto;
 
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
-#weatherHourlyInner {
-  padding: 0 12px 12px;
+#weatherHourlyInner {  
+  padding: 0 12px;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
 .weatherHourlyPills {
-  background-color: var(--warning-good);
   display: flex;
   justify-content: center;
   align-items: center;
 
   border-radius: 100vh;
   color: white;
+
+  opacity: 0.65;
+  transition: opacity 0.2s ease;
+}
+
+.weatherHourlyPills.safe {
+  background-color: var(--warning-good);
+}
+
+.weatherHourlyPills.caution {
+  background-color: var(--warning-caution);
+}
+
+.weatherHourlyPills.danger {
+  background-color: var(--warning-bad);
+}
+
+.weatherHourlyPills.selected {
+  opacity: 1;
 }
 
 .weatherHourlyPillInner {
+  width: 48px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 
-  padding: 24px 12px;
+  padding: 24px 8px;
+}
+
+.weatherHourlyPillCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.weatherHourlyRain {
+  font-size: 12px;
 }
 
 #weatherHeatIndexContainer {
+  background-color: var(--warning-good);
+}
+
+#weatherHeatIndexContainer[riskLevel = "caution"] {
   background-color: var(--warning-caution);
+}
+
+#weatherHeatIndexContainer[riskLevel = "danger"] {
+  background-color: var(--warning-bad);
 }
 
 #weatherHeatIndexInner {
@@ -273,7 +341,7 @@ button {
 
 #weatherCardsContainer {
   width: 90%;
-  margin: 0 auto 24px;
+  margin: 0 auto 48px;
 
   display: grid;
   grid-template-columns: 50% 50%;
@@ -288,15 +356,15 @@ button {
   margin: auto;
 }
 
-.weatherCardContainer.normal {
+.weatherCardContainer[cardRisk = "safe"] {
   background: linear-gradient(180deg, #2C8025 0%, #075001 100%);
 }
 
-.weatherCardContainer.caution {
+.weatherCardContainer[cardRisk = "caution"] {
   background: linear-gradient(180deg, #AC5D24 0%, #502701 100%);
 }
 
-.weatherCardContainer.danger {
+.weatherCardContainer[cardRisk = "danger"] {
   background: linear-gradient(180deg, #B70000 0%, #500101 100%);
 }
 
@@ -314,10 +382,8 @@ button {
   gap: 4px;
 }
 
-.weatherCardTop > i {
-  padding-left: 4px;
-
-  font-size: 24px;
+.weather-card-icon {
+  width: 24px;
 }
 
 .weatherCardTitle {
@@ -356,4 +422,6 @@ button {
 .weatherCardBottom > p {
   font-size: 10px;
   color: var(--light-grey);
+
+  line-height: 0.75rem;
 }
