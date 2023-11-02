@@ -19,12 +19,13 @@
         <button id="connectButton">
           <i class="fas fa-plug"></i> <!-- Icon for the connect button -->
         </button>
-          <span id="riskLevelText">High Risk</span><br> <!-- This will be dynamically updated based on temperature -->
-        <!-- H1 for temp reading -->
+          <span id="riskLevelText">High Risk</span><br><br> <!-- This will be dynamically updated based on temperature -->
+          <span id="tempDirectionIcon" class="fas fa-arrow-up"></span> <!-- This icon will change based on temperature direction -->
+          <!-- H1 for temp reading -->
         <h1 id="temperatureValue"> <span id="tempValue">0 </span></h1>
-        <span id="tempDirectionIcon" class="fas fa-arrow-up"></span> <!-- This icon will change based on temperature direction -->
         <!-- Add the canvas for the line chart -->
         <canvas id="temperatureChart" width="800" height="400"></canvas>
+        <strong id="todayLabel">Today</strong>
       </div>
 
       <!-- All the weather elements container -->
