@@ -65,7 +65,7 @@ function handleTemperatureChange(value) {
   if (previousTemperature !== null) {
     updateFluctuationDisplay(tempAsFloat, previousTemperature);
   }
-  
+
   previousTemperature = tempAsFloat; // Update the previous temperature
   // Append new data point with current timestamp and temperature value
   temperatureTimeSeries.append(new Date().getTime(), tempAsFloat);
