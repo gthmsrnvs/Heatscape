@@ -453,3 +453,18 @@ button {
 
   line-height: 0.75rem;
 }
+
+/* Styles for the temperature chart canvas */
+#temperatureChart {
+  width: var(--mobile-width); /* Set the width to match the mobile width variable */
+  height: 150px; /* Set a fixed height for the chart */
+  background-color: transparent; /* Ensure the background is transparent */
+}
+
+/* Media query for devices with a width of 390px (iPhone 12 Pro portrait mode) */
+@media only screen and (max-width: 390px) {
+  #temperatureChart {
+    width: 100%; /* Make the chart width responsive */
+    height: 150px; /* Maintain a fixed height for consistency */
+  }
+}

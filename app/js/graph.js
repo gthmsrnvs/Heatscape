@@ -4,7 +4,7 @@ import { SmoothieChart, TimeSeries } from 'smoothie';
 // Create a TimeSeries instance to store the data
 const temperatureTimeSeries = new TimeSeries();
 
-// Create a new SmoothieChart instance with transparent background and no grid
+// Create a new SmoothieChart instance with specified axes ranges and no grid
 const temperatureChart = new SmoothieChart({
   grid: {
     strokeStyle: 'transparent', // Make grid lines transparent
@@ -14,19 +14,27 @@ const temperatureChart = new SmoothieChart({
     verticalSections: 0,
   },
   labels: { fillStyle: '#000000' }, // Label color
-  horizontalLines: [],
+  minValue: 20, // Minimum value for Y-axis
+  maxValue: 40, // Maximum value for Y-axis
+  millisPerPixel: 20, // Horizontal scale control
+  horizontalLines: [
+    { color: '#ffffff', lineWidth: 1, value: 15 },
+    { color: '#ffffff', lineWidth: 1, value: 45 },
+  ],
 });
 
 // Add the TimeSeries instance to the chart
 temperatureChart.addTimeSeries(temperatureTimeSeries, {
-  strokeStyle: 'rgba(0, 255, 0, 1)', // Line color
-  fillStyle: 'transparent',          // Area under the line is transparent
-  lineWidth: 2,                      // Line width
+  strokeStyle: 'rgba(255, 165, 0, 0.5)', // Line color
+  fillStyle: 'rgba(255, 165, 0, 0.2)',              // Area under the line is transparent
+  lineWidth: 2,                           // Line width
 });
 
 // Call this function to start the chart streaming
 function startChart() {
   const canvas = document.getElementById('temperatureChart');
+  canvas.height = 150; // Set the height of the chart
+  canvas.width = window.innerWidth; // Set the width to match the screen width
   temperatureChart.streamTo(canvas, 1000); // Delay of 1000ms
 }
 
@@ -40,7 +48,9 @@ function handleTemperatureChange(value) {
     return;
   }
   const tempAsFloat = value.getFloat32(0, true);
-  document.getElementById('temperatureValue').innerText = `Temperature: ${tempAsFloat}`;
+  document.getElementById('temperatureValue').innerText = `Temperature: ${tempAsFloat} °C`;
+  temperatureTimeSeries.append(new Date().getTime(), tempAsFloat);
+  // Append new data point with current timestamp and temperature value
   temperatureTimeSeries.append(new Date().getTime(), tempAsFloat);
 }
 
