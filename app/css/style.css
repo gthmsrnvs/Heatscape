@@ -84,10 +84,10 @@ body {
   align-items: center;
 }
 
-.hideScroll::-webkit-scrollbar {
+.hiddenScroll::-webkit-scrollbar {
 	width: 0px;
 	height: 0px;
-} 
+}  
 
 /* temp reading styles */
 #temperatureValue {
@@ -230,7 +230,7 @@ button {
 
   margin-top: 36px;
 
-  background-image: url("/images/sunny.png");
+  background-image: none;
   background-repeat: no-repeat;
 
   max-height: 600px;
@@ -249,9 +249,19 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 12px;
 
   padding: 12px;
   z-index: 9999;
+}
+
+.weatherDateButton {
+  position: absolute;
+  color: white;
+}
+
+.weatherDateButton.disabled {
+  opacity: 0.3;
 }
 
 #weatherHourlyContainer {
@@ -359,7 +369,7 @@ button {
 
 #weatherCardsContainer {
   width: 90%;
-  margin: 0 auto 48px;
+  margin: 0 auto 32px;
 
   display: grid;
   grid-template-columns: 50% 50%;

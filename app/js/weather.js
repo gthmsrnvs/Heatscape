@@ -1,15 +1,50 @@
-import ScrollBooster from "scrollbooster";
+// import ScrollBooster from "scrollbooster";
 
-new ScrollBooster({
-  viewport: document.getElementById("weatherHourlyContainer"),
-  scrollMode: "transform",
-  direction: "horizontal",
-});
+// new ScrollBooster({
+//   viewport: document.getElementById("weatherHourlyContainer"),
+//   scrollMode: "transform",
+//   direction: "horizontal",
+// });
 
+let selectedDate = 0;
+setupChangeDateBtn();
 setupWeatherPart();
+
+// Switch to different date when users click the arrow buttons
+function setupChangeDateBtn() {
+  const prevDateBtn = document.getElementById("weatherDatePrevBtn");
+  const nextDateBtn = document.getElementById("weatherDateNextBtn");
+  
+  prevDateBtn.addEventListener("click", () => {changeDate(-1)});
+  nextDateBtn.addEventListener("click", () => {changeDate(1)});
+
+  function changeDate(day) {
+    selectedDate += day;
+  
+    if (selectedDate <= 0) {
+      selectedDate = 0;
+      prevDateBtn.classList.add("disabled");
+      prevDateBtn.disabled = true;
+    } else {
+      prevDateBtn.classList.remove("disabled");
+      prevDateBtn.disabled = false;
+    }
+  
+    if (selectedDate >= 5) {
+      selectedDate = 5;
+      nextDateBtn.classList.add("disabled");
+      nextDateBtn.disabled = true;
+    } else {
+      nextDateBtn.classList.remove("disabled");
+      nextDateBtn.disabled = false;
+    }
+  
+    setupWeatherPart();
+  }
+}
+
 // Function to setup weather page detail
 async function setupWeatherPart() {
-  const date = new Date();
   const daysLst = {
     0: "Sunday",
     1: "Monday",
@@ -34,20 +69,31 @@ async function setupWeatherPart() {
     11: "December",
   };
 
-  const selectedDate = document.getElementById("weatherSelectedDate");
+  const date = new Date();
+  date.setDate(date.getDate() + selectedDate);
+
   const day = date.getDate();
   const month = monthsLst[date.getMonth()];
   const year = date.getFullYear();
   const hour = date.getHours();
 
-  selectedDate.innerText = `${daysLst[date.getDay()]}, ${day} ${month} ${year}`;
+  const selectedDateDisplay = document.getElementById("weatherSelectedDate");
+  selectedDateDisplay.innerText = `${daysLst[date.getDay()]}, ${day} ${month} ${year}`;
+  await displayWeatherData(hour);
+}
 
-  const weatherData = await fetchWeatherData();
+async function displayWeatherData(hour) {
+  var weatherData = await fetchWeatherData();
+  weatherData = weatherData[`day${selectedDate}`];
+
+  const hr = selectedDate == 0 ? hour : 0;
 
   const weatherTimeContainer = document.getElementById("weatherHourlyInner");
+  weatherTimeContainer.innerHTML = "";
+
   for (var i = 0; i < 24; i++) {
-    const weather = weatherData.weather[i];
-    const now = i == hour ? true : false;
+    const weather = weatherData[i];
+    const now = (i == hr && selectedDate == 0) ? true : false;
     const child = generateWeatherTime(weather, i, now);
 
     // Change the background color based on the heat safety index
@@ -56,7 +102,7 @@ async function setupWeatherPart() {
     weatherTimeContainer.appendChild(child);
   }
 
-  await selectWeatherElement(weatherData.weather[hour], hour);
+  await selectWeatherElement(weatherData[hr], hr);
 }
 
 // Function to create the pills of different timeframes
@@ -81,6 +127,7 @@ function generateWeatherTime(weather, hr, now) {
   else if (rain > 50) condition = "cloudy";
 
   const weatherIcon = weatherIconList[condition];
+  container.setAttribute("weatherCondition", condition);
 
   container.innerHTML = `
   <div class="weatherHourlyPillInner">
@@ -93,12 +140,7 @@ function generateWeatherTime(weather, hr, now) {
   </div>
   `;
 
-  container.addEventListener("click", () => {
-    selectWeatherElement(weather, hr);
-    document.getElementById(
-      "weatherContainer"
-    ).style.backgroundImage = `url("/images/${condition}.png")`;
-  });
+  container.addEventListener("click", () => selectWeatherElement(weather, hr));
   return container;
 }
 
@@ -241,17 +283,14 @@ async function selectWeatherElement(weather, selectedTime) {
   allPills.forEach((pill) => pill.classList.remove("selected"));
   allPills[selectedTime].classList.add("selected");
 
-  if (!weather) weather = await fetchWeatherData().weather[selectedTime];
+  const condition = allPills[selectedTime].getAttribute("weatherCondition");
+  document.getElementById("weatherContainer").style.backgroundImage = `url("/images/${condition}.png")`;
 
   const weatherTimeContainer = document.getElementById("weatherHourlyInner");
-  const selectedElement = weatherTimeContainer.querySelector(
-    `:nth-child(${selectedTime + 1})`
-  );
+  const selectedElement = weatherTimeContainer.querySelector(`:nth-child(${selectedTime + 1})`);
   weatherTimeContainer.parentElement.scrollLeft = selectedElement.offsetLeft;
 
-  const heatIndexContainer = document.getElementById(
-    "weatherHeatIndexContainer"
-  );
+  const heatIndexContainer = document.getElementById("weatherHeatIndexContainer");
   const heatIndexContent = document.getElementById("heatIndexBottom");
   const heatIndexRiskLevel = calHealthRisk(weather);
   heatIndexContainer.setAttribute("riskLevel", heatIndexRiskLevel);
