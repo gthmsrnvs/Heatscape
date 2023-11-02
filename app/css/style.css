@@ -170,12 +170,19 @@ body {
   height: 0px;
 }
 /* Homepage styles */
+#scrollContainer{
+  background: linear-gradient(to bottom, #de564c, #ff8c39); /* Orange gradient background */
+}
 
 #homeContainer {
-  background: linear-gradient(to right, var(--warning-bad), var(--warning-caution)); /* Orange gradient background */
+  background: transparent;
   color: #fff; /* White text */
   text-align: center;
-  padding: 10px;
+  padding: 0%;
+  width: var(--mobile-width); /* Set the width to match the mobile width variable */
+  max-width: 100%; /* Ensure it does not exceed the viewport width */
+  margin: 0 auto; /* Center it horizontally */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 #temperatureValue {
@@ -197,17 +204,17 @@ body {
 }
 
 #temperatureChart {
-  width: var(--mobile-width); /* Set the width to match the mobile width variable */
-  height: 150px; /* Set a fixed height for the chart */
-  background: transparent; /* Apply a transparent background */
-  z-index: 1001; /* Higher than the navbar's z-index */
-  position: relative; /* z-index only works on positioned elements (not static) */
+  width: 100%; /* Use 100% of the parent's width */
+  max-width: var(--mobile-width); /* Ensure it does not exceed the mobile width */
+  height: auto; /* Adjust height automatically */
+  margin: 0 auto; /* Center it horizontally */
+  background: transparent; /* Apply the orange gradient background */
+  z-index: 10; /* Ensure it is above other content but below fixed elements like navbar */
 }
-
 
 /* Style for the connect button specifically */
 #connectButton {
-  width: 80%;
+  width: 15%;
   max-width: 300px;
   display: block;
   background-color: var(--warning-caution); /* Use the caution color for the button */

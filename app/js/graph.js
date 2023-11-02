@@ -26,7 +26,7 @@ const temperatureChart = new SmoothieChart({
 // Add the TimeSeries instance to the chart
 temperatureChart.addTimeSeries(temperatureTimeSeries, {
   strokeStyle: '#ffffff', // Line color
-  fillStyle: 'rgba(255, 255,255, 0.3)',              // Area under the line is transparent
+  fillStyle: 'transparent',              // Area under the line is transparent
   lineWidth: 2,                           // Line width
 });
 
@@ -48,7 +48,7 @@ function handleTemperatureChange(value) {
     return;
   }
   const tempAsFloat = value.getFloat32(0, true);
-  document.getElementById('temperatureValue').innerText = `Temperature: ${tempAsFloat} °C`;
+  document.getElementById('temperatureValue').innerText = ` ${tempAsFloat} °C`;
   temperatureTimeSeries.append(new Date().getTime(), tempAsFloat);
   // Append new data point with current timestamp and temperature value
   temperatureTimeSeries.append(new Date().getTime(), tempAsFloat);
