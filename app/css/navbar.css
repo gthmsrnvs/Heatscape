@@ -4,7 +4,7 @@ nav {
     justify-content: space-around;
     background-color: var(--light);
 
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
 
     border-top: 1px solid var(--light-grey);

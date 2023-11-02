@@ -1,6 +1,5 @@
 {
-    "location": "Sydney",
-    "weather": [
+    "day0": [
         {
             "time": "12AM",
             "temperature": 20,
@@ -192,6 +191,976 @@
             "precipitation": 90,
             "wind": 2,
             "uv": 0
+        }
+    ],
+    "day1": [
+        {
+            "time": "12AM",
+            "temperature": 18,
+            "humidity": 65,
+            "precipitation": 10,
+            "wind": 2,
+            "uv": 1
+        },
+        {
+            "time": "1AM",
+            "temperature": 19,
+            "humidity": 64,
+            "precipitation": 5,
+            "wind": 3,
+            "uv": 2
+        },
+        {
+            "time": "2AM",
+            "temperature": 18,
+            "humidity": 63,
+            "precipitation": 5,
+            "wind": 3,
+            "uv": 2
+        },
+        {
+            "time": "3AM",
+            "temperature": 17,
+            "humidity": 62,
+            "precipitation": 0,
+            "wind": 2,
+            "uv": 1
+        },
+        {
+            "time": "4AM",
+            "temperature": 17,
+            "humidity": 60,
+            "precipitation": 0,
+            "wind": 2,
+            "uv": 1
+        },
+        {
+            "time": "5AM",
+            "temperature": 18,
+            "humidity": 59,
+            "precipitation": 0,
+            "wind": 1,
+            "uv": 2
+        },
+        {
+            "time": "6AM",
+            "temperature": 19,
+            "humidity": 58,
+            "precipitation": 0,
+            "wind": 1,
+            "uv": 3
+        },
+        {
+            "time": "7AM",
+            "temperature": 20,
+            "humidity": 57,
+            "precipitation": 5,
+            "wind": 1,
+            "uv": 4
+        },
+        {
+            "time": "8AM",
+            "temperature": 22,
+            "humidity": 56,
+            "precipitation": 10,
+            "wind": 2,
+            "uv": 5
+        },
+        {
+            "time": "9AM",
+            "temperature": 24,
+            "humidity": 55,
+            "precipitation": 15,
+            "wind": 3,
+            "uv": 6
+        },
+        {
+            "time": "10AM",
+            "temperature": 26,
+            "humidity": 54,
+            "precipitation": 20,
+            "wind": 4,
+            "uv": 7
+        },
+        {
+            "time": "11AM",
+            "temperature": 28,
+            "humidity": 53,
+            "precipitation": 25,
+            "wind": 5,
+            "uv": 8
+        },
+        {
+            "time": "12PM",
+            "temperature": 29,
+            "humidity": 52,
+            "precipitation": 30,
+            "wind": 6,
+            "uv": 8
+        },
+        {
+            "time": "1PM",
+            "temperature": 30,
+            "humidity": 51,
+            "precipitation": 35,
+            "wind": 7,
+            "uv": 8
+        },
+        {
+            "time": "2PM",
+            "temperature": 31,
+            "humidity": 50,
+            "precipitation": 40,
+            "wind": 8,
+            "uv": 8
+        },
+        {
+            "time": "3PM",
+            "temperature": 31,
+            "humidity": 50,
+            "precipitation": 45,
+            "wind": 9,
+            "uv": 7
+        },
+        {
+            "time": "4PM",
+            "temperature": 30,
+            "humidity": 51,
+            "precipitation": 50,
+            "wind": 8,
+            "uv": 6
+        },
+        {
+            "time": "5PM",
+            "temperature": 29,
+            "humidity": 52,
+            "precipitation": 55,
+            "wind": 7,
+            "uv": 5
+        },
+        {
+            "time": "6PM",
+            "temperature": 28,
+            "humidity": 53,
+            "precipitation": 60,
+            "wind": 6,
+            "uv": 3
+        },
+        {
+            "time": "7PM",
+            "temperature": 26,
+            "humidity": 54,
+            "precipitation": 65,
+            "wind": 5,
+            "uv": 2
+        },
+        {
+            "time": "8PM",
+            "temperature": 24,
+            "humidity": 55,
+            "precipitation": 70,
+            "wind": 4,
+            "uv": 1
+        },
+        {
+            "time": "9PM",
+            "temperature": 23,
+            "humidity": 56,
+            "precipitation": 75,
+            "wind": 4,
+            "uv": 0
+        },
+        {
+            "time": "10PM",
+            "temperature": 21,
+            "humidity": 57,
+            "precipitation": 80,
+            "wind": 3,
+            "uv": 0
+        },
+        {
+            "time": "11PM",
+            "temperature": 20,
+            "humidity": 58,
+            "precipitation": 85,
+            "wind": 3,
+            "uv": 0
+        }
+    ],
+    "day2": [
+        {
+            "time": "12AM",
+            "temperature": 19,
+            "humidity": 60,
+            "precipitation": 5,
+            "wind": 3,
+            "uv": 1
+        },
+        {
+            "time": "1AM",
+            "temperature": 20,
+            "humidity": 59,
+            "precipitation": 5,
+            "wind": 3,
+            "uv": 2
+        },
+        {
+            "time": "2AM",
+            "temperature": 19,
+            "humidity": 58,
+            "precipitation": 5,
+            "wind": 3,
+            "uv": 2
+        },
+        {
+            "time": "3AM",
+            "temperature": 18,
+            "humidity": 57,
+            "precipitation": 0,
+            "wind": 2,
+            "uv": 1
+        },
+        {
+            "time": "4AM",
+            "temperature": 18,
+            "humidity": 55,
+            "precipitation": 0,
+            "wind": 2,
+            "uv": 1
+        },
+        {
+            "time": "5AM",
+            "temperature": 19,
+            "humidity": 54,
+            "precipitation": 0,
+            "wind": 1,
+            "uv": 2
+        },
+        {
+            "time": "6AM",
+            "temperature": 20,
+            "humidity": 53,
+            "precipitation": 5,
+            "wind": 1,
+            "uv": 3
+        },
+        {
+            "time": "7AM",
+            "temperature": 22,
+            "humidity": 52,
+            "precipitation": 10,
+            "wind": 2,
+            "uv": 4
+        },
+        {
+            "time": "8AM",
+            "temperature": 24,
+            "humidity": 51,
+            "precipitation": 15,
+            "wind": 3,
+            "uv": 5
+        },
+        {
+            "time": "9AM",
+            "temperature": 25,
+            "humidity": 50,
+            "precipitation": 20,
+            "wind": 4,
+            "uv": 6
+        },
+        {
+            "time": "10AM",
+            "temperature": 26,
+            "humidity": 49,
+            "precipitation": 25,
+            "wind": 5,
+            "uv": 7
+        },
+        {
+            "time": "11AM",
+            "temperature": 27,
+            "humidity": 48,
+            "precipitation": 30,
+            "wind": 6,
+            "uv": 8
+        },
+        {
+            "time": "12PM",
+            "temperature": 28,
+            "humidity": 47,
+            "precipitation": 35,
+            "wind": 7,
+            "uv": 9
+        },
+        {
+            "time": "1PM",
+            "temperature": 29,
+            "humidity": 46,
+            "precipitation": 40,
+            "wind": 8,
+            "uv": 9
+        },
+        {
+            "time": "2PM",
+            "temperature": 30,
+            "humidity": 45,
+            "precipitation": 45,
+            "wind": 9,
+            "uv": 8
+        },
+        {
+            "time": "3PM",
+            "temperature": 31,
+            "humidity": 44,
+            "precipitation": 50,
+            "wind": 9,
+            "uv": 7
+        },
+        {
+            "time": "4PM",
+            "temperature": 31,
+            "humidity": 43,
+            "precipitation": 55,
+            "wind": 9,
+            "uv": 7
+        },
+        {
+            "time": "5PM",
+            "temperature": 30,
+            "humidity": 42,
+            "precipitation": 60,
+            "wind": 8,
+            "uv": 6
+        },
+        {
+            "time": "6PM",
+            "temperature": 29,
+            "humidity": 41,
+            "precipitation": 65,
+            "wind": 7,
+            "uv": 5
+        },
+        {
+            "time": "7PM",
+            "temperature": 28,
+            "humidity": 40,
+            "precipitation": 70,
+            "wind": 6,
+            "uv": 4
+        },
+        {
+            "time": "8PM",
+            "temperature": 27,
+            "humidity": 39,
+            "precipitation": 75,
+            "wind": 6,
+            "uv": 3
+        },
+        {
+            "time": "9PM",
+            "temperature": 26,
+            "humidity": 38,
+            "precipitation": 80,
+            "wind": 5,
+            "uv": 2
+        },
+        {
+            "time": "10PM",
+            "temperature": 25,
+            "humidity": 37,
+            "precipitation": 85,
+            "wind": 5,
+            "uv": 1
+        },
+        {
+            "time": "11PM",
+            "temperature": 24,
+            "humidity": 36,
+            "precipitation": 90,
+            "wind": 4,
+            "uv": 0
+        }
+    ],
+    "day3": [
+        {
+            "time": "12AM",
+            "temperature": 21,
+            "humidity": 68,
+            "precipitation": 85,
+            "wind": 3,
+            "uv": 2
+        },
+        {
+            "time": "1AM",
+            "temperature": 20,
+            "humidity": 66,
+            "precipitation": 90,
+            "wind": 4,
+            "uv": 3
+        },
+        {
+            "time": "2AM",
+            "temperature": 19,
+            "humidity": 64,
+            "precipitation": 95,
+            "wind": 4,
+            "uv": 3
+        },
+        {
+            "time": "3AM",
+            "temperature": 18,
+            "humidity": 62,
+            "precipitation": 90,
+            "wind": 3,
+            "uv": 2
+        },
+        {
+            "time": "4AM",
+            "temperature": 18,
+            "humidity": 60,
+            "precipitation": 85,
+            "wind": 3,
+            "uv": 2
+        },
+        {
+            "time": "5AM",
+            "temperature": 19,
+            "humidity": 58,
+            "precipitation": 80,
+            "wind": 2,
+            "uv": 3
+        },
+        {
+            "time": "6AM",
+            "temperature": 20,
+            "humidity": 56,
+            "precipitation": 75,
+            "wind": 2,
+            "uv": 4
+        },
+        {
+            "time": "7AM",
+            "temperature": 22,
+            "humidity": 54,
+            "precipitation": 70,
+            "wind": 3,
+            "uv": 5
+        },
+        {
+            "time": "8AM",
+            "temperature": 24,
+            "humidity": 52,
+            "precipitation": 65,
+            "wind": 4,
+            "uv": 6
+        },
+        {
+            "time": "9AM",
+            "temperature": 25,
+            "humidity": 50,
+            "precipitation": 60,
+            "wind": 4,
+            "uv": 7
+        },
+        {
+            "time": "10AM",
+            "temperature": 26,
+            "humidity": 48,
+            "precipitation": 55,
+            "wind": 5,
+            "uv": 8
+        },
+        {
+            "time": "11AM",
+            "temperature": 28,
+            "humidity": 46,
+            "precipitation": 50,
+            "wind": 6,
+            "uv": 8
+        },
+        {
+            "time": "12PM",
+            "temperature": 29,
+            "humidity": 44,
+            "precipitation": 55,
+            "wind": 7,
+            "uv": 8
+        },
+        {
+            "time": "1PM",
+            "temperature": 30,
+            "humidity": 42,
+            "precipitation": 60,
+            "wind": 8,
+            "uv": 7
+        },
+        {
+            "time": "2PM",
+            "temperature": 31,
+            "humidity": 40,
+            "precipitation": 65,
+            "wind": 8,
+            "uv": 6
+        },
+        {
+            "time": "3PM",
+            "temperature": 32,
+            "humidity": 38,
+            "precipitation": 70,
+            "wind": 7,
+            "uv": 5
+        },
+        {
+            "time": "4PM",
+            "temperature": 32,
+            "humidity": 36,
+            "precipitation": 75,
+            "wind": 6,
+            "uv": 5
+        },
+        {
+            "time": "5PM",
+            "temperature": 31,
+            "humidity": 34,
+            "precipitation": 80,
+            "wind": 6,
+            "uv": 4
+        },
+        {
+            "time": "6PM",
+            "temperature": 30,
+            "humidity": 32,
+            "precipitation": 85,
+            "wind": 5,
+            "uv": 3
+        },
+        {
+            "time": "7PM",
+            "temperature": 29,
+            "humidity": 30,
+            "precipitation": 90,
+            "wind": 4,
+            "uv": 3
+        },
+        {
+            "time": "8PM",
+            "temperature": 28,
+            "humidity": 28,
+            "precipitation": 80,
+            "wind": 4,
+            "uv": 2
+        },
+        {
+            "time": "9PM",
+            "temperature": 27,
+            "humidity": 26,
+            "precipitation": 70,
+            "wind": 3,
+            "uv": 2
+        },
+        {
+            "time": "10PM",
+            "temperature": 26,
+            "humidity": 24,
+            "precipitation": 60,
+            "wind": 3,
+            "uv": 1
+        },
+        {
+            "time": "11PM",
+            "temperature": 25,
+            "humidity": 22,
+            "precipitation": 50,
+            "wind": 2,
+            "uv": 1
+        }
+    ],
+    "day4": [
+        {
+            "time": "12AM",
+            "temperature": 20,
+            "humidity": 65,
+            "precipitation": 15,
+            "wind": 3,
+            "uv": 2
+        },
+        {
+            "time": "1AM",
+            "temperature": 21,
+            "humidity": 64,
+            "precipitation": 10,
+            "wind": 4,
+            "uv": 3
+        },
+        {
+            "time": "2AM",
+            "temperature": 20,
+            "humidity": 63,
+            "precipitation": 10,
+            "wind": 4,
+            "uv": 3
+        },
+        {
+            "time": "3AM",
+            "temperature": 19,
+            "humidity": 62,
+            "precipitation": 5,
+            "wind": 3,
+            "uv": 2
+        },
+        {
+            "time": "4AM",
+            "temperature": 19,
+            "humidity": 60,
+            "precipitation": 5,
+            "wind": 3,
+            "uv": 2
+        },
+        {
+            "time": "5AM",
+            "temperature": 20,
+            "humidity": 59,
+            "precipitation": 5,
+            "wind": 2,
+            "uv": 3
+        },
+        {
+            "time": "6AM",
+            "temperature": 21,
+            "humidity": 58,
+            "precipitation": 10,
+            "wind": 2,
+            "uv": 4
+        },
+        {
+            "time": "7AM",
+            "temperature": 23,
+            "humidity": 57,
+            "precipitation": 15,
+            "wind": 3,
+            "uv": 5
+        },
+        {
+            "time": "8AM",
+            "temperature": 24,
+            "humidity": 56,
+            "precipitation": 20,
+            "wind": 4,
+            "uv": 6
+        },
+        {
+            "time": "9AM",
+            "temperature": 26,
+            "humidity": 55,
+            "precipitation": 25,
+            "wind": 4,
+            "uv": 7
+        },
+        {
+            "time": "10AM",
+            "temperature": 27,
+            "humidity": 54,
+            "precipitation": 30,
+            "wind": 5,
+            "uv": 8
+        },
+        {
+            "time": "11AM",
+            "temperature": 28,
+            "humidity": 53,
+            "precipitation": 35,
+            "wind": 6,
+            "uv": 8
+        },
+        {
+            "time": "12PM",
+            "temperature": 29,
+            "humidity": 52,
+            "precipitation": 35,
+            "wind": 7,
+            "uv": 8
+        },
+        {
+            "time": "1PM",
+            "temperature": 30,
+            "humidity": 51,
+            "precipitation": 30,
+            "wind": 8,
+            "uv": 7
+        },
+        {
+            "time": "2PM",
+            "temperature": 31,
+            "humidity": 50,
+            "precipitation": 25,
+            "wind": 9,
+            "uv": 6
+        },
+        {
+            "time": "3PM",
+            "temperature": 32,
+            "humidity": 49,
+            "precipitation": 20,
+            "wind": 9,
+            "uv": 5
+        },
+        {
+            "time": "4PM",
+            "temperature": 32,
+            "humidity": 48,
+            "precipitation": 15,
+            "wind": 9,
+            "uv": 5
+        },
+        {
+            "time": "5PM",
+            "temperature": 31,
+            "humidity": 47,
+            "precipitation": 15,
+            "wind": 8,
+            "uv": 4
+        },
+        {
+            "time": "6PM",
+            "temperature": 30,
+            "humidity": 46,
+            "precipitation": 10,
+            "wind": 7,
+            "uv": 3
+        },
+        {
+            "time": "7PM",
+            "temperature": 29,
+            "humidity": 45,
+            "precipitation": 10,
+            "wind": 7,
+            "uv": 3
+        },
+        {
+            "time": "8PM",
+            "temperature": 28,
+            "humidity": 44,
+            "precipitation": 5,
+            "wind": 6,
+            "uv": 2
+        },
+        {
+            "time": "9PM",
+            "temperature": 27,
+            "humidity": 43,
+            "precipitation": 5,
+            "wind": 6,
+            "uv": 2
+        },
+        {
+            "time": "10PM",
+            "temperature": 26,
+            "humidity": 42,
+            "precipitation": 5,
+            "wind": 5,
+            "uv": 1
+        },
+        {
+            "time": "11PM",
+            "temperature": 25,
+            "humidity": 41,
+            "precipitation": 5,
+            "wind": 5,
+            "uv": 1
+        }
+    ],
+    "day5": [
+        {
+            "time": "12AM",
+            "temperature": 22,
+            "humidity": 70,
+            "precipitation": 80,
+            "wind": 2,
+            "uv": 2
+        },
+        {
+            "time": "1AM",
+            "temperature": 23,
+            "humidity": 68,
+            "precipitation": 85,
+            "wind": 3,
+            "uv": 3
+        },
+        {
+            "time": "2AM",
+            "temperature": 22,
+            "humidity": 66,
+            "precipitation": 90,
+            "wind": 3,
+            "uv": 3
+        },
+        {
+            "time": "3AM",
+            "temperature": 21,
+            "humidity": 64,
+            "precipitation": 85,
+            "wind": 2,
+            "uv": 2
+        },
+        {
+            "time": "4AM",
+            "temperature": 21,
+            "humidity": 62,
+            "precipitation": 80,
+            "wind": 2,
+            "uv": 2
+        },
+        {
+            "time": "5AM",
+            "temperature": 22,
+            "humidity": 60,
+            "precipitation": 75,
+            "wind": 1,
+            "uv": 3
+        },
+        {
+            "time": "6AM",
+            "temperature": 23,
+            "humidity": 58,
+            "precipitation": 70,
+            "wind": 1,
+            "uv": 4
+        },
+        {
+            "time": "7AM",
+            "temperature": 24,
+            "humidity": 56,
+            "precipitation": 65,
+            "wind": 2,
+            "uv": 5
+        },
+        {
+            "time": "8AM",
+            "temperature": 26,
+            "humidity": 54,
+            "precipitation": 60,
+            "wind": 3,
+            "uv": 6
+        },
+        {
+            "time": "9AM",
+            "temperature": 27,
+            "humidity": 52,
+            "precipitation": 55,
+            "wind": 4,
+            "uv": 7
+        },
+        {
+            "time": "10AM",
+            "temperature": 28,
+            "humidity": 50,
+            "precipitation": 50,
+            "wind": 4,
+            "uv": 8
+        },
+        {
+            "time": "11AM",
+            "temperature": 29,
+            "humidity": 48,
+            "precipitation": 45,
+            "wind": 5,
+            "uv": 8
+        },
+        {
+            "time": "12PM",
+            "temperature": 30,
+            "humidity": 46,
+            "precipitation": 45,
+            "wind": 6,
+            "uv": 8
+        },
+        {
+            "time": "1PM",
+            "temperature": 31,
+            "humidity": 44,
+            "precipitation": 50,
+            "wind": 7,
+            "uv": 7
+        },
+        {
+            "time": "2PM",
+            "temperature": 32,
+            "humidity": 42,
+            "precipitation": 55,
+            "wind": 8,
+            "uv": 6
+        },
+        {
+            "time": "3PM",
+            "temperature": 33,
+            "humidity": 40,
+            "precipitation": 60,
+            "wind": 8,
+            "uv": 5
+        },
+        {
+            "time": "4PM",
+            "temperature": 34,
+            "humidity": 38,
+            "precipitation": 65,
+            "wind": 8,
+            "uv": 5
+        },
+        {
+            "time": "5PM",
+            "temperature": 34,
+            "humidity": 36,
+            "precipitation": 70,
+            "wind": 7,
+            "uv": 4
+        },
+        {
+            "time": "6PM",
+            "temperature": 33,
+            "humidity": 34,
+            "precipitation": 75,
+            "wind": 6,
+            "uv": 3
+        },
+        {
+            "time": "7PM",
+            "temperature": 32,
+            "humidity": 32,
+            "precipitation": 80,
+            "wind": 6,
+            "uv": 3
+        },
+        {
+            "time": "8PM",
+            "temperature": 31,
+            "humidity": 30,
+            "precipitation": 85,
+            "wind": 5,
+            "uv": 2
+        },
+        {
+            "time": "9PM",
+            "temperature": 30,
+            "humidity": 28,
+            "precipitation": 90,
+            "wind": 5,
+            "uv": 2
+        },
+        {
+            "time": "10PM",
+            "temperature": 29,
+            "humidity": 26,
+            "precipitation": 85,
+            "wind": 4,
+            "uv": 1
+        },
+        {
+            "time": "11PM",
+            "temperature": 28,
+            "humidity": 24,
+            "precipitation": 80,
+            "wind": 4,
+            "uv": 1
         }
     ]
 }

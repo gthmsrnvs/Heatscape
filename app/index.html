@@ -13,7 +13,7 @@
 </head>
 <body>
   <main id="mobileScreenContainer">
-    <section id="scrollContainer" class="hideScroll">
+    <section id="scrollContainer" class="hiddenScroll">
       <!-- Main chatbox container -->
       <div id="homeContainer">
         <button id="connectButton">Connect to ESP32</button>
@@ -24,14 +24,14 @@
       </div>
 
       <!-- All the weather elements container -->
-      <div id="weatherContainer" class="hideScroll">
+      <div id="weatherContainer" class="hiddenScroll">
         <div id="weatherDateContainer">
-          <button class="weatherDateButton"> : </button>
+          <button id="weatherDatePrevBtn" class="weatherDateButton disabled" style="transform: rotate(-90deg); left: 10%;"> <i class="fa-solid fa-chevron-up"></i> </button>
           <p id="weatherSelectedDate">Sunday, 1 January 1990</p>
-          <button class="weatherDateButton"> : </button>
+          <button id="weatherDateNextBtn" class="weatherDateButton" style="transform: rotate(90deg); right: 10%;"> <i class="fa-solid fa-chevron-up"></i> </button>
         </div>
 
-        <div id="weatherHourlyContainer" class="hideScroll">
+        <div id="weatherHourlyContainer" class="hiddenScroll">
           <div id="weatherHourlyInner">
           </div>
         </div>
