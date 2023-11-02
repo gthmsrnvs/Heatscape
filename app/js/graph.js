@@ -58,15 +58,35 @@ function handleTemperatureChange(value) {
     return;
   }
   const tempAsFloat = value.getFloat32(0, true);
-  document.getElementById('temperatureValue').innerText = ` ${tempAsFloat} °C`;
-  temperatureTimeSeries.append(new Date().getTime(), tempAsFloat);
+  const temperatureElement = document.getElementById('temperatureValue');
+  const riskLevelTextElement = document.getElementById('riskLevelText');
+  const tempDirectionIconElement = document.getElementById('tempDirectionIcon');
+  
+  // Assuming you have a previous temperature value stored
+  const previousTemp = parseFloat(temperatureElement.innerText);
+  const tempDifference = tempAsFloat - previousTemp;
 
-  // Calculate and display fluctuation if previousTemperature is not null
-  if (previousTemperature !== null) {
-    updateFluctuationDisplay(tempAsFloat, previousTemperature);
+  // Update the temperature value on the page
+  temperatureElement.innerText = `${tempAsFloat.toFixed(1)} °C`;
+
+  // Determine and update the risk level based on the temperature
+  if (tempAsFloat > 30) {
+    riskLevelTextElement.innerText = 'High Risk';
+  } else if (tempAsFloat > 25) {
+    riskLevelTextElement.innerText = 'Medium Risk';
+  } else {
+    riskLevelTextElement.innerText = 'Low Risk';
   }
 
-  previousTemperature = tempAsFloat; // Update the previous temperature
+  // Update the direction of the temperature change
+  if (tempDifference > 0) {
+    tempDirectionIconElement.className = 'fas fa-arrow-up';
+  } else if (tempDifference < 0) {
+    tempDirectionIconElement.className = 'fas fa-arrow-down';
+  } else {
+    tempDirectionIconElement.className = ''; // No change
+  }
+
   // Append new data point with current timestamp and temperature value
   temperatureTimeSeries.append(new Date().getTime(), tempAsFloat);
 }

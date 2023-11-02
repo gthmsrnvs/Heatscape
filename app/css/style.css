@@ -186,8 +186,8 @@ body {
 }
 
 #temperatureValue {
+  font-size: 3em; /* Larger text size */
   font-weight: bold; /* Bold text for temperature */
-  font-size: 2em; /* Larger text size */
   display: inline-block; /* Make the temperature value inline-block to center it */
   margin: 0 auto; /* Center the temperature value */
 }
@@ -198,9 +198,9 @@ body {
 
 #tempDirectionIcon {
   /* Adjust the size and color as needed */
-  font-size: 1.5em;
+  font-size: 3em;
   color: #fff;
-  margin-right: 10px;
+  margin-right: 0.5em;
 }
 
 #temperatureChart {
