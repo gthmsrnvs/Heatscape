@@ -9,14 +9,14 @@
   --dark: #151515;
   --dark-grey: #606060;
   --warning-good: #ADD66B;
-  --warning-caution: #F7B171;
+  --warning-caution: #edaf33;
   --warning-bad: #CD5B5B;
 
   --normal-bg: linear-gradient(#71F5CD, #37CBDF);
   --low-risk-bg: linear-gradient(#F6D86E, #EDB13C);
   --high-risk-bg: linear-gradient(#E65C53, #F7A366);
 
-  --primary: #F45E49;
+  --primary: #f54932;
 
   --weather-card-width: 160px;
   --weather-severity-hori: linear-gradient(270deg, #70FF00 0%, #F00 100%);
