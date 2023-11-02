@@ -13,7 +13,7 @@ const temperatureChart = new SmoothieChart({
     millisPerLine: 0,
     verticalSections: 0,
   },
-  labels: { fillStyle: '#000000' }, // Label color
+  labels: { fillStyle: '#FFFFFF' }, // Label color
   minValue: 20, // Minimum value for Y-axis
   maxValue: 30, // Maximum value for Y-axis
   millisPerPixel: 154, // Horizontal scale control
@@ -25,8 +25,8 @@ const temperatureChart = new SmoothieChart({
 
 // Add the TimeSeries instance to the chart
 temperatureChart.addTimeSeries(temperatureTimeSeries, {
-  strokeStyle: 'rgba(255, 165, 0, 0.5)', // Line color
-  fillStyle: 'rgba(255, 165, 0, 0.2)',              // Area under the line is transparent
+  strokeStyle: '#ffffff', // Line color
+  fillStyle: 'rgba(255, 255,255, 0.3)',              // Area under the line is transparent
   lineWidth: 2,                           // Line width
 });
 

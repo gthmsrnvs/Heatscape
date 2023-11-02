@@ -171,6 +171,40 @@ body {
 }
 /* Homepage styles */
 
+#homeContainer {
+  background: linear-gradient(to right, var(--warning-bad), var(--warning-caution)); /* Orange gradient background */
+  color: #fff; /* White text */
+  text-align: center;
+  padding: 10px;
+}
+
+#temperatureValue {
+  font-weight: bold; /* Bold text for temperature */
+  font-size: 2em; /* Larger text size */
+  display: inline-block; /* Make the temperature value inline-block to center it */
+  margin: 0 auto; /* Center the temperature value */
+}
+
+#tempValue::after {
+  content: "°C"; /* Add °C after the temperature value */
+}
+
+#tempDirectionIcon {
+  /* Adjust the size and color as needed */
+  font-size: 1.5em;
+  color: #fff;
+  margin-right: 10px;
+}
+
+#temperatureChart {
+  width: var(--mobile-width); /* Set the width to match the mobile width variable */
+  height: 150px; /* Set a fixed height for the chart */
+  background: transparent; /* Apply a transparent background */
+  z-index: 1001; /* Higher than the navbar's z-index */
+  position: relative; /* z-index only works on positioned elements (not static) */
+}
+
+
 /* Style for the connect button specifically */
 #connectButton {
   width: 80%;
@@ -199,25 +233,6 @@ body {
   transform: translateY(4px) scale(0.98); /* Subtle "click" effect with scale down */
   color: #ddd; /* Lighten the text color to indicate the button is pressed */
   transition: transform 0.1s, box-shadow 0.1s; /* Quicker transition for tactile feedback */
-}
-
-
-/* temp reading styles */
-#temperatureValue {
-  text-align: center;
-  font-size: 4em;
-}
-
-#tempValue[data-temp="normal"] {
-  color: green;
-}
-
-#tempValue[data-temp="hot"] {
-  color: orange;
-}
-
-#tempValue[data-temp="veryhot"] {
-  color: red;
 }
 
 /* Style for mobile screen container */

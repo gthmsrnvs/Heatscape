@@ -14,11 +14,15 @@
 <body>
   <main id="mobileScreenContainer">
     <section id="scrollContainer" class="hiddenScroll">
-      <!-- Main chatbox container -->
+      <!-- Main container -->
       <div id="homeContainer">
-        <button id="connectButton">Connect to ESP32</button>
+        <button id="connectButton">
+          <i class="fas fa-plug"></i> <!-- Icon for the connect button -->
+        </button>
+          <span id="riskLevelText">High Risk</span> <!-- This will be dynamically updated based on temperature -->
         <!-- H1 for temp reading -->
-        <h1 id="temperatureValue">Temperature: <span id="tempValue">0</span></h1>
+        <h1 id="temperatureValue"> <span id="tempValue">0 </span></h1>
+        <span id="tempDirectionIcon" class="fas fa-arrow-up"></span> <!-- This icon will change based on temperature direction -->
         <!-- Add the canvas for the line chart -->
         <canvas id="temperatureChart" width="800" height="400"></canvas>
       </div>
@@ -124,6 +128,7 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/components.js"></script>
+  <script type="module" src="js/chat.js"></script>
   <script type="module" src="js/weather.js"></script>
   <script type="module" src="js/graph.js"></script>
 </body>
