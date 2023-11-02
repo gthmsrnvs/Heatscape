@@ -1,68 +1,57 @@
 import 'chartjs-adapter-date-fns';
-import * as THREE from 'https://unpkg.com/three@0.128.0/build/three.module.js';
-import { Line2 } from 'https://unpkg.com/three@0.128.0/examples/jsm/lines/Line2.js';
-import { LineMaterial } from 'https://unpkg.com/three@0.128.0/examples/jsm/lines/LineMaterial.js';
-import { LineGeometry } from 'https://unpkg.com/three@0.128.0/examples/jsm/lines/LineGeometry.js';
+import { SmoothieChart, TimeSeries } from 'smoothie';
 
-// Set up the scene, camera, and renderer
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+// Create a TimeSeries instance to store the data
+const temperatureTimeSeries = new TimeSeries();
 
-// Set up the 3D line graph
-const points = [];
-const maxPoints = 100;
-let line, material, geometry;
+// Create a new SmoothieChart instance with transparent background and no grid
+const temperatureChart = new SmoothieChart({
+  grid: {
+    strokeStyle: 'transparent', // Make grid lines transparent
+    fillStyle: 'transparent',   // Make background transparent
+    lineWidth: 0,               // No grid lines
+    millisPerLine: 0,
+    verticalSections: 0,
+  },
+  labels: { fillStyle: '#000000' }, // Label color
+  horizontalLines: [],
+});
 
-function initGraph() {
-  material = new LineMaterial({
-    color: 0x00ff00,
-    linewidth: 5, // in pixels
-  });
+// Add the TimeSeries instance to the chart
+temperatureChart.addTimeSeries(temperatureTimeSeries, {
+  strokeStyle: 'rgba(0, 255, 0, 1)', // Line color
+  fillStyle: 'transparent',          // Area under the line is transparent
+  lineWidth: 2,                      // Line width
+});
 
-  geometry = new LineGeometry();
-  geometry.setPositions(new Float32Array(maxPoints * 3)); // 3 vertices per point
-
-  line = new Line2(geometry, material);
-  line.computeLineDistances();
-  line.scale.set(1, 1, 1);
-
-  scene.add(line);
+// Call this function to start the chart streaming
+function startChart() {
+  const canvas = document.getElementById('temperatureChart');
+  temperatureChart.streamTo(canvas, 1000); // Delay of 1000ms
 }
 
-function updateGraph(tempAsFloat) {
-  if (points.length > maxPoints) {
-    points.shift();
+// Global variable to store the Bluetooth characteristic
+let globalCharacteristic;
+
+// Function to handle temperature change
+function handleTemperatureChange(value) {
+  if (!value) {
+    console.error('Sensor disconnected or value not received.');
+    return;
   }
-
-  points.push(tempAsFloat);
-
-  const positions = line.geometry.attributes.position.array;
-  let index = 0;
-
-  points.forEach((point, i) => {
-    positions[index++] = i; // x
-    positions[index++] = point; // y
-    positions[index++] = 0; // z
-  });
-
-  line.geometry.attributes.position.needsUpdate = true;
+  const tempAsFloat = value.getFloat32(0, true);
+  document.getElementById('temperatureValue').innerText = `Temperature: ${tempAsFloat}`;
+  temperatureTimeSeries.append(new Date().getTime(), tempAsFloat);
 }
 
-initGraph();
-
-// Animation loop
-function animate() {
-  requestAnimationFrame(animate);
-
-  // Add any animations or updates here
-
-  renderer.render(scene, camera);
+// Function to start reading the temperature data
+function startReadingTemperature() {
+  setInterval(() => {
+    if (globalCharacteristic) {
+      globalCharacteristic.readValue().then(handleTemperatureChange);
+    }
+  }, 2000);
 }
-
-animate();
 
 // Add an event listener to connect and start receiving data when the button is clicked
 document.getElementById('connectButton').addEventListener('click', connectAndReceiveData);
@@ -71,41 +60,19 @@ document.getElementById('connectButton').addEventListener('click', connectAndRec
 function connectAndReceiveData() {
   navigator.bluetooth
     .requestDevice({ filters: [{ services: ['12345678-1234-5678-1234-56789abcdef0'] }] })
-    .then((device) => {
-      console.log('Got device:', device.name);
-      return device.gatt.connect();
+    .then(device => device.gatt.connect())
+    .then(server => server.getPrimaryService('12345678-1234-5678-1234-56789abcdef0'))
+    .then(service => service.getCharacteristic('12345678-1234-5678-1234-56789abcdef1'))
+    .then(characteristic => {
+      globalCharacteristic = characteristic;
+      return characteristic.readValue();
     })
-    .then((server) => {
-      return server.getPrimaryService('12345678-1234-5678-1234-56789abcdef0');
+    .then(value => {
+      handleTemperatureChange(value);
+      startReadingTemperature();
     })
-    .then((service) => {
-      return service.getCharacteristic('12345678-1234-5678-1234-56789abcdef1');
-    })
-    .then((characteristic) => {
-      // Read the value initially
-      characteristic.readValue().then((value) => {
-        handleTemperatureChange({ target: { value } });
-      });
-
-      // Set up an interval to read and update the value every 2 seconds
-      setInterval(() => {
-        characteristic.readValue().then((value) => {
-          handleTemperatureChange({ target: { value } });
-        });
-      }, 2000); // 2000 milliseconds = 2 seconds
-    })
-    .catch((error) => {
-      console.log('Error:', error);
-    });
+    .catch(error => console.error('Error:', error));
 }
 
-// Function to handle temperature change
-function handleTemperatureChange(event) {
-  const value = event.target.value;
-  const tempAsFloat = value.getFloat32(0, true);
-
-  // Update the <h1> element with the temperature value
-  document.getElementById('temperatureValue').innerText = `Temperature: ${tempAsFloat}`;
-  // Update the 3D line graph
-  updateGraph(tempAsFloat);
-}
+// Call startChart when the page loads
+document.addEventListener('DOMContentLoaded', startChart);
