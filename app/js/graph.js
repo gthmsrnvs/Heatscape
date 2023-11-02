@@ -41,6 +41,16 @@ function startChart() {
 // Global variable to store the Bluetooth characteristic
 let globalCharacteristic;
 
+// Function to update the fluctuation display
+function updateFluctuationDisplay(currentTemperature, previousTemperature) {
+  const fluctuationOverlay = document.getElementById('fluctuationOverlay');
+  const fluctuation = Math.abs(currentTemperature - previousTemperature);
+  fluctuationOverlay.textContent = `Fluctuation: ${fluctuation.toFixed(2)}°C`;
+}
+
+// Global variable to store the previous temperature
+let previousTemperature = null;
+
 // Function to handle temperature change
 function handleTemperatureChange(value) {
   if (!value) {
@@ -50,6 +60,13 @@ function handleTemperatureChange(value) {
   const tempAsFloat = value.getFloat32(0, true);
   document.getElementById('temperatureValue').innerText = ` ${tempAsFloat} °C`;
   temperatureTimeSeries.append(new Date().getTime(), tempAsFloat);
+
+  // Calculate and display fluctuation if previousTemperature is not null
+  if (previousTemperature !== null) {
+    updateFluctuationDisplay(tempAsFloat, previousTemperature);
+  }
+  
+  previousTemperature = tempAsFloat; // Update the previous temperature
   // Append new data point with current timestamp and temperature value
   temperatureTimeSeries.append(new Date().getTime(), tempAsFloat);
 }
