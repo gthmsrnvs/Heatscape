@@ -1,6 +1,8 @@
 import Chart from 'chart.js/auto';
 import 'chartjs-adapter-date-fns';
 
+let array = [];
+
 // Initialize the chart
 const ctx = document.getElementById('temperatureChart').getContext('2d');
 const temperatureChart = new Chart(ctx, {
@@ -9,7 +11,7 @@ const temperatureChart = new Chart(ctx, {
     labels: [], // Will be populated in real-time
     datasets: [{
       label: 'Temperature in Celsius',
-      data: [], // Will be populated in real-time
+      data: array, // Will be populated in real-time
       borderColor: 'rgba(75, 192, 192, 1)',
       borderWidth: 1,
       fill: false,

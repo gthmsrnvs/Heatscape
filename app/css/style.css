@@ -89,6 +89,24 @@ body {
 	height: 0px;
 } 
 
+/* temp reading styles */
+#temperatureValue {
+  text-align: center;
+  font-size: 4em;
+}
+
+#tempValue[data-temp="normal"] {
+  color: green;
+}
+
+#tempValue[data-temp="hot"] {
+  color: orange;
+}
+
+#tempValue[data-temp="veryhot"] {
+  color: red;
+}
+
 /* Style for mobile screen container */
 #mobileScreenContainer {
   position: relative;
