@@ -8,9 +8,9 @@
   --light-grey: #E6E6E6;
   --dark: #151515;
   --dark-grey: #606060;
-  --warning-good: #ADD66B;
-  --warning-caution: #edaf33;
-  --warning-bad: #CD5B5B;
+  --warning-good: #28b57d;
+  --warning-caution: #f6b430;
+  --warning-bad: #ca3925;
 
   --normal-bg: linear-gradient(#71F5CD, #37CBDF);
   --low-risk-bg: linear-gradient(#F6D86E, #EDB13C);
@@ -336,7 +336,7 @@ button {
 
 #heatIndexBottom > span {
   display: inline;
-  opacity: 0.5;
+  opacity: 0.75;
 }
 
 #weatherCardsContainer {
@@ -357,15 +357,15 @@ button {
 }
 
 .weatherCardContainer[cardRisk = "safe"] {
-  background: linear-gradient(180deg, #2C8025 0%, #075001 100%);
+  background: var(--warning-good);
 }
 
 .weatherCardContainer[cardRisk = "caution"] {
-  background: linear-gradient(180deg, #AC5D24 0%, #502701 100%);
+  background: var(--warning-caution);
 }
 
 .weatherCardContainer[cardRisk = "danger"] {
-  background: linear-gradient(180deg, #B70000 0%, #500101 100%);
+  background: var(--warning-bad);
 }
 
 .weatherCardInner {
