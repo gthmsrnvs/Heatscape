@@ -15,8 +15,8 @@ const temperatureChart = new SmoothieChart({
   },
   labels: { fillStyle: '#000000' }, // Label color
   minValue: 20, // Minimum value for Y-axis
-  maxValue: 40, // Maximum value for Y-axis
-  millisPerPixel: 20, // Horizontal scale control
+  maxValue: 30, // Maximum value for Y-axis
+  millisPerPixel: 154, // Horizontal scale control
   horizontalLines: [
     { color: '#ffffff', lineWidth: 1, value: 15 },
     { color: '#ffffff', lineWidth: 1, value: 45 },

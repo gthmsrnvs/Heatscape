@@ -4,68 +4,149 @@
   --mobile-height: 844px;
   --bottom-nav-height: 64px;
 
-  --light: #FDFDFD;
-  --light-grey: #E6E6E6;
+  --light: #fdfdfd;
+  --light-grey: #e6e6e6;
   --dark: #151515;
   --dark-grey: #606060;
   --warning-good: #28b57d;
   --warning-caution: #f6b430;
   --warning-bad: #ca3925;
 
-  --normal-bg: linear-gradient(#71F5CD, #37CBDF);
-  --low-risk-bg: linear-gradient(#F6D86E, #EDB13C);
-  --high-risk-bg: linear-gradient(#E65C53, #F7A366);
+  --normal-bg: linear-gradient(#71f5cd, #37cbdf);
+  --low-risk-bg: linear-gradient(#f6d86e, #edb13c);
+  --high-risk-bg: linear-gradient(#e65c53, #f7a366);
 
   --primary: #f54932;
 
   --weather-card-width: 160px;
-  --weather-severity-hori: linear-gradient(270deg, #70FF00 0%, #F00 100%);
+  --weather-severity-hori: linear-gradient(270deg, #70ff00 0%, #f00 100%);
 }
 
 /* Reset css styles */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* General body styles */
@@ -85,9 +166,41 @@ body {
 }
 
 .hiddenScroll::-webkit-scrollbar {
-	width: 0px;
-	height: 0px;
-}  
+  width: 0px;
+  height: 0px;
+}
+/* Homepage styles */
+
+/* Style for the connect button specifically */
+#connectButton {
+  width: 80%;
+  max-width: 300px;
+  display: block;
+  background-color: var(--warning-caution); /* Use the caution color for the button */
+  color: var(--light);
+  font-style: oblique;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  padding: 10px 20px;
+  margin: 20px auto;
+  text-align: center;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.1s, color 0.3s;
+  outline: none;
+  box-shadow: 0 6px var(--warning-bad); /* Use the bad color for the shadow */
+  border-radius: 50px; /* Rounded button */
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight color on mobile */
+}
+
+#connectButton:active {
+  background-color: #e65c53; /* darker shade of the caution color */
+  box-shadow: 0 3px var(--warning-bad);
+  transform: translateY(4px) scale(0.98); /* Subtle "click" effect with scale down */
+  color: #ddd; /* Lighten the text color to indicate the button is pressed */
+  transition: transform 0.1s, box-shadow 0.1s; /* Quicker transition for tactile feedback */
+}
+
 
 /* temp reading styles */
 #temperatureValue {
@@ -114,7 +227,7 @@ body {
   width: var(--mobile-width);
   height: var(--mobile-height);
   overflow: hidden;
-  
+
   background-color: #fff;
 }
 
@@ -205,27 +318,22 @@ button {
 /* Add icons to bot and user messages */
 .bot::before {
   content: "\f544";
-  font-family: "Font Awesome 5 Free"; 
-  font-weight: 900; 
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   margin-right: 5px;
 }
 
 .user::after {
   content: "\f007";
-  font-family: "Font Awesome 5 Free"; 
-  font-weight: 900; 
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   margin-left: 5px;
 }
-
-
-
-
-
 
 /* Weather part */
 #weatherContainer {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   gap: 24px;
 
   margin-top: 36px;
@@ -245,7 +353,7 @@ button {
 
   background-color: var(--dark-grey);
   color: white;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -266,7 +374,7 @@ button {
 
 #weatherHourlyContainer {
   scroll-behavior: smooth;
-  
+
   position: relative;
   min-height: 155px;
   width: 95%;
@@ -275,7 +383,7 @@ button {
   overflow-x: auto;
 }
 
-#weatherHourlyInner {  
+#weatherHourlyInner {
   padding: 0 12px;
   display: flex;
   align-items: center;
@@ -336,11 +444,11 @@ button {
   background-color: var(--warning-good);
 }
 
-#weatherHeatIndexContainer[riskLevel = "caution"] {
+#weatherHeatIndexContainer[riskLevel="caution"] {
   background-color: var(--warning-caution);
 }
 
-#weatherHeatIndexContainer[riskLevel = "danger"] {
+#weatherHeatIndexContainer[riskLevel="danger"] {
   background-color: var(--warning-bad);
 }
 
@@ -348,7 +456,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  
+
   padding: 16px 36px;
 
   color: white;
@@ -384,22 +492,22 @@ button {
   margin: auto;
 }
 
-.weatherCardContainer[cardRisk = "safe"] {
+.weatherCardContainer[cardRisk="safe"] {
   background: var(--warning-good);
 }
 
-.weatherCardContainer[cardRisk = "caution"] {
+.weatherCardContainer[cardRisk="caution"] {
   background: var(--warning-caution);
 }
 
-.weatherCardContainer[cardRisk = "danger"] {
+.weatherCardContainer[cardRisk="danger"] {
   background: var(--warning-bad);
 }
 
 .weatherCardInner {
   display: flex;
   flex-direction: column;
-  
+
   padding: 12px;
   color: white;
 }
@@ -456,7 +564,9 @@ button {
 
 /* Styles for the temperature chart canvas */
 #temperatureChart {
-  width: var(--mobile-width); /* Set the width to match the mobile width variable */
+  width: var(
+    --mobile-width
+  ); /* Set the width to match the mobile width variable */
   height: 150px; /* Set a fixed height for the chart */
   background-color: transparent; /* Ensure the background is transparent */
 }

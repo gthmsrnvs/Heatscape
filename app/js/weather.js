@@ -52,7 +52,7 @@ async function setupWeatherPart() {
     3: "Wednesday",
     4: "Thursday",
     5: "Friday",
-    6: "Saturaday",
+    6: "Saturday",
   };
   const monthsLst = {
     0: "January",
