@@ -6,6 +6,7 @@
 
   --light: #fdfdfd;
   --light-grey: #e6e6e6;
+  --light-grey2: #cecece;
   --dark: #151515;
   --dark-grey: #606060;
   --warning-good: #28b57d;
@@ -169,6 +170,11 @@ body {
   width: 0px;
   height: 0px;
 }
+
+.hidden {
+  display: none;
+}
+
 /* Homepage styles */
 #scrollContainer{
   background: linear-gradient(to bottom, #de564c, #ff8c39); /* Orange gradient background */
@@ -181,7 +187,7 @@ body {
   padding: 0%;
   width: var(--mobile-width); /* Set the width to match the mobile width variable */
   max-width: 100%; /* Ensure it does not exceed the viewport width */
-  margin: 0 auto; /* Center it horizontally */
+  margin: 0 auto 16px; /* Center it horizontally */
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
@@ -358,8 +364,6 @@ button {
   flex-direction: column;
   gap: 24px;
 
-  margin-top: 36px;
-
   background-image: none;
   background-repeat: no-repeat;
 
@@ -382,7 +386,7 @@ button {
   gap: 12px;
 
   padding: 12px;
-  z-index: 9999;
+  z-index: 1;
 }
 
 .weatherDateButton {
@@ -583,6 +587,67 @@ button {
 
   line-height: 0.75rem;
 }
+
+#overheatPopup {
+  width: 100%;
+  background-color: var(--light);
+}
+
+#overheatHeader {
+  background-color: var(--primary);
+  color: white;
+
+  font-size: 1.2em;
+  font-weight: 600;
+  
+  text-align: center;
+  padding: 24px 0;
+}
+
+#overheatPopupInner {
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  text-align: center;
+}
+
+#overheatDescription {
+  font-size: 0.9em;
+
+  color: var(--light-grey2);
+  line-height: 1.15rem;
+}
+
+#overheatCtaContainer {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.overheatCtaBtn {
+  height: 3em;
+  padding: 0 16px;
+
+  border-radius: 100vw;
+}
+
+.overheatCtaBtn:nth-child(1) {
+  border: 1.5px solid #303030;
+  color: #303030;
+}
+
+.overheatCtaBtn:nth-child(2) {
+  background: #303030;
+  color: white;
+}
+
 
 /* Styles for the temperature chart canvas */
 #temperatureChart {

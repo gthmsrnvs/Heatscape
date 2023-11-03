@@ -78,6 +78,9 @@ function handleTemperatureChange(value) {
     riskLevelTextElement.innerText = 'Low Risk';
   }
 
+  // Update the display of the overheat popup panel
+  updateOverheatPopup(tempAsFloat);
+
   // Update the direction of the temperature change
   if (tempDifference > 0) {
     tempDirectionIconElement.className = 'fas fa-arrow-up';
@@ -123,3 +126,12 @@ function connectAndReceiveData() {
 
 // Call startChart when the page loads
 document.addEventListener('DOMContentLoaded', startChart);
+
+// Display the overheat popup panel when users are overheated
+let overheatPopup = document.getElementById("overheatPopup");
+function updateOverheatPopup(currentTemperature) {
+  if (!overheatPopup) overheatPopup = document.getElementById("overheatPopup");
+
+  if (currentTemperature > 30 && overheatPopup.classList.contains("hidden")) overheatPopup.classList.remove("hidden");
+  else if (!overheatPopup.classList.contains("hidden")) overheatPopup.classList.add("hidden");
+}
