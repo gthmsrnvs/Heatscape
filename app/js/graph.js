@@ -1,6 +1,9 @@
 import 'chartjs-adapter-date-fns';
 import { SmoothieChart, TimeSeries } from 'smoothie';
 
+// Global variable to store the previous temperature reading
+let previousTemperature = null;
+
 // Create a TimeSeries instance to store the data
 const temperatureTimeSeries = new TimeSeries();
 
@@ -42,7 +45,7 @@ function startChart() {
 let globalCharacteristic;
 
 // Function to update the fluctuation display
-function updateFluctuationDisplay(currentTemperature, previousTemperature) {
+function updateFluctuationDisplay(currentTemperature) {
   const fluctuationOverlay = document.getElementById('fluctuationOverlay');
   if (fluctuationOverlay) { // Check if the element exists
     const fluctuation = Math.abs(currentTemperature - previousTemperature);
@@ -62,17 +65,14 @@ function handleTemperatureChange(value) {
   const temperatureElement = document.getElementById('temperatureValue');
   const riskLevelTextElement = document.getElementById('riskLevelText');
   const tempDirectionIconElement = document.getElementById('tempDirectionIcon');
-  
+
   // Update the temperature value on the page
   temperatureElement.innerText = `${tempAsFloat.toFixed(1)} °C`;
-  // This should be in the scope where the temperature is updated
-  window.currentBodyTemp = tempAsFloat.toFixed(1) + '°C';
-
 
   // If there is a previous temperature, calculate fluctuation and update display
   if (previousTemperature !== null) {
     const tempDifference = tempAsFloat - previousTemperature;
-    updateFluctuationDisplay(tempAsFloat, previousTemperature); // Call the function to update the fluctuation display
+    updateFluctuationDisplay(tempAsFloat); // Call the function to update the fluctuation display
 
     // Update the direction of the temperature change
     if (tempDifference > 0) {
@@ -90,7 +90,6 @@ function handleTemperatureChange(value) {
   // Append new data point with current timestamp and temperature value
   temperatureTimeSeries.append(new Date().getTime(), tempAsFloat);
 }
-
 
 // Function to start reading the temperature data
 function startReadingTemperature() {
@@ -131,5 +130,7 @@ function updateOverheatPopup(currentTemperature) {
   if (!overheatPopup) overheatPopup = document.getElementById("overheatPopup");
 
   if (currentTemperature > 30 && overheatPopup.classList.contains("hidden")) overheatPopup.classList.remove("hidden");
-  else if (!overheatPopup.classList.contains("hidden")) overheatPopup.classList.add("hidden");
+  else if (currentTemperature <= 30 && !overheatPopup.classList.contains("hidden")) overheatPopup.classList.add("hidden");
 }
+
+document.addEventListener('DOMContentLoaded', startChart);
