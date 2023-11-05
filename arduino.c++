@@ -12,7 +12,7 @@
 OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 
-BLECharacteristic *pCharacteristic;
+BLECharacteristic * pCharacteristic;
 
 void setup() {
   Serial.begin(115200);

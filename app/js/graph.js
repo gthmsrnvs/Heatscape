@@ -44,12 +44,13 @@ let globalCharacteristic;
 // Function to update the fluctuation display
 function updateFluctuationDisplay(currentTemperature, previousTemperature) {
   const fluctuationOverlay = document.getElementById('fluctuationOverlay');
-  const fluctuation = Math.abs(currentTemperature - previousTemperature);
-  fluctuationOverlay.textContent = `Fluctuation: ${fluctuation.toFixed(2)}°C`;
+  if (fluctuationOverlay) { // Check if the element exists
+    const fluctuation = Math.abs(currentTemperature - previousTemperature);
+    fluctuationOverlay.textContent = `Fluctuation: ${fluctuation.toFixed(2)}°C`;
+  } else {
+    console.error('Fluctuation overlay element not found');
+  }
 }
-
-// Global variable to store the previous temperature
-let previousTemperature = null;
 
 // Function to handle temperature change
 function handleTemperatureChange(value) {
@@ -62,34 +63,34 @@ function handleTemperatureChange(value) {
   const riskLevelTextElement = document.getElementById('riskLevelText');
   const tempDirectionIconElement = document.getElementById('tempDirectionIcon');
   
-  // Assuming you have a previous temperature value stored
-  const previousTemp = parseFloat(temperatureElement.innerText);
-  const tempDifference = tempAsFloat - previousTemp;
-
   // Update the temperature value on the page
   temperatureElement.innerText = `${tempAsFloat.toFixed(1)} °C`;
+  // This should be in the scope where the temperature is updated
+  window.currentBodyTemp = tempAsFloat.toFixed(1) + '°C';
 
-  // Determine and update the risk level based on the temperature
-  if (tempAsFloat > 30) {
-    riskLevelTextElement.innerText = 'High Risk';
-  } else if (tempAsFloat > 25) {
-    riskLevelTextElement.innerText = 'Medium Risk';
-  } else {
-    riskLevelTextElement.innerText = 'Low Risk';
+
+  // If there is a previous temperature, calculate fluctuation and update display
+  if (previousTemperature !== null) {
+    const tempDifference = tempAsFloat - previousTemperature;
+    updateFluctuationDisplay(tempAsFloat, previousTemperature); // Call the function to update the fluctuation display
+
+    // Update the direction of the temperature change
+    if (tempDifference > 0) {
+      tempDirectionIconElement.className = 'fas fa-arrow-up';
+    } else if (tempDifference < 0) {
+      tempDirectionIconElement.className = 'fas fa-arrow-down';
+    } else {
+      tempDirectionIconElement.className = ''; // No change
+    }
   }
 
-  // Update the direction of the temperature change
-  if (tempDifference > 0) {
-    tempDirectionIconElement.className = 'fas fa-arrow-up';
-  } else if (tempDifference < 0) {
-    tempDirectionIconElement.className = 'fas fa-arrow-down';
-  } else {
-    tempDirectionIconElement.className = ''; // No change
-  }
+  // Store the current temperature as the previous temperature for the next update
+  previousTemperature = tempAsFloat;
 
   // Append new data point with current timestamp and temperature value
   temperatureTimeSeries.append(new Date().getTime(), tempAsFloat);
 }
+
 
 // Function to start reading the temperature data
 function startReadingTemperature() {

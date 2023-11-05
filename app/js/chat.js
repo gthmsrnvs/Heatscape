@@ -1,10 +1,16 @@
-//CHATBOT UI
+import { Application } from '@splinetool/runtime';
+
+const canvas = document.getElementById('canvas3d');
+const app = new Application(canvas);
+app.load('https://prod.spline.design/oDTAahU9O3e6IAPy/scene.splinecode');
+
 // Replace this placeholder with your OpenAI API key
 const openAiApiKey = "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";
 
 // Initialize variables for context, set default values
 let userLocation = "Central Coast, NSW, Australia";
-let currentBodyTemp = "38*C";
+let currentBodyTemp = window.currentBodyTemp || "38°C"; // Default value if not set
+console.log(currentBodyTemp);
 let currentWeather = "Sunny";
 
 // Initialize chatbot on page load

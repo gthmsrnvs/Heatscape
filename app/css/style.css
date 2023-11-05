@@ -172,6 +172,8 @@ body {
 /* Homepage styles */
 #scrollContainer{
   background: linear-gradient(to bottom, #de564c, #ff8c39); /* Orange gradient background */
+  height: calc(var(--mobile-height) - var(--bottom-nav-height) - 12px);
+  overflow: auto;
 }
 
 #homeContainer {
@@ -194,6 +196,10 @@ body {
 
 #tempValue::after {
   content: "°C"; /* Add °C after the temperature value */
+}
+
+#fluctuationOverlay{
+  z-index: 1;
 }
 
 #tempDirectionIcon {
@@ -245,19 +251,13 @@ body {
 /* Style for mobile screen container */
 #mobileScreenContainer {
   position: relative;
-
   width: var(--mobile-width);
   height: var(--mobile-height);
   overflow: hidden;
-
   background-color: #fff;
 }
 
-#scrollContainer {
-  height: calc(var(--mobile-height) - var(--bottom-nav-height) - 12px);
-  overflow: auto;
-}
-
+/* chatbot styles */
 /* Style for chatbox */
 #chatbox {
   width: 100%;
@@ -296,19 +296,6 @@ button {
 #datePickerContainer {
   text-align: center;
   margin: 10px;
-}
-
-/* Style for bottom navigation */
-#bottomNav {
-  position: absolute;
-  bottom: 0;
-
-  width: var(--mobile-width);
-  height: var(--bottom-nav-height);
-
-  display: flex;
-  justify-content: space-around;
-  background-color: #ccc;
 }
 
 /* Style for bot messages */

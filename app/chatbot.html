@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Chatbot Page - HeatScape</title>
+  <title>Recommendations - HeatScape</title>
   <!-- Include CSS -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
   <!-- Include Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Configure viewport for mobile -->
@@ -17,8 +18,10 @@
       <div id="chatbox">
         <!-- Messages will be appended here -->
         <div id="messages"></div>
+        <!-- 3D robot icon -->
+        <canvas id="canvas3d" style="width: 50px; height: 50px;"></canvas>
         <!-- Date picker container -->
-        <div id="datePickerContainer" style="display: none;">
+        <div id="datePickerContainer" style="display: block;">
           <label for="datePicker">Pick a Date:</label>
           <input type="date" id="datePicker">
         </div>
@@ -29,17 +32,13 @@
         </div>
       </div>
     </section>
-
-    <!-- Bottom navigation -->
-    <div id="bottomNav">
-      <button>Home</button>
-      <button>Plan</button>
-      <button>Weather</button>
-    </div>
+      <!-- Bottom navigation -->
+      <nav id="navbar"></nav>
   </main>
 
   <!-- Include main JavaScript -->
+  <script src="js/components.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="app/js/chat.js"></script>
+  <script type="module" src="js/chat.js"></script>
 </body>
 </html>

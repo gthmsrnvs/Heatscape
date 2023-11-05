@@ -12,6 +12,8 @@
     "vite": "^4.3.2"
   },
   "dependencies": {
+    "@splinetool/react-spline": "^2.2.6",
+    "@splinetool/runtime": "^0.9.492",
     "axios": "^1.5.1",
     "chart.js": "^4.4.0",
     "chartjs": "^0.3.24",
