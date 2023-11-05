@@ -124,3 +124,12 @@ function connectAndReceiveData() {
 
 // Call startChart when the page loads
 document.addEventListener('DOMContentLoaded', startChart);
+
+// Display the overheat popup panel when users are overheated
+let overheatPopup = document.getElementById("overheatPopup");
+function updateOverheatPopup(currentTemperature) {
+  if (!overheatPopup) overheatPopup = document.getElementById("overheatPopup");
+
+  if (currentTemperature > 30 && overheatPopup.classList.contains("hidden")) overheatPopup.classList.remove("hidden");
+  else if (!overheatPopup.classList.contains("hidden")) overheatPopup.classList.add("hidden");
+}

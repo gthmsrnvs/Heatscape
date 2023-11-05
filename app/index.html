@@ -29,6 +29,19 @@
         <strong id="todayLabel">Today</strong>
       </div>
 
+      <!-- A popup panel to provide CTA for users when they are overheated -->
+      <div id="overheatPopup" class="hidden">
+        <h2 id="overheatHeader">WARNING: High risk of overheated</h2>
+
+        <div id="overheatPopupInner">
+          <p id="overheatDescription">Your current body temperature is over 30°C, here is how you can prevent overheated</p>
+          <div id="overheatCtaContainer">
+            <button class="overheatCtaBtn">Ask AI Suggestions</button>
+            <button class="overheatCtaBtn">Find Cooling Space</button>
+          </div>
+        </div>
+      </div>
+
       <!-- All the weather elements container -->
       <div id="weatherContainer" class="hiddenScroll">
         <div id="weatherDateContainer">
@@ -121,7 +134,8 @@
         </div>
       </div>
     </section>
-      <!-- Bottom navigation -->
+
+    <!-- Bottom navigation -->
     <nav id="navbar">
     </nav>
   </main>
