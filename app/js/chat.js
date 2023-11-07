@@ -1,29 +1,49 @@
-// Replace this placeholder with your OpenAI API key
-const openAiApiKey = "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";
+// Replace this placeholder with your actual OpenAI API key
+const openAiApiKey = "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";
 
-// Initialize variables for context, set default values
-let userLocation = "Central Coast, NSW, Australia";
-let currentBodyTemp = window.currentBodyTemp || "38°C"; // Default value if not set
-console.log(currentBodyTemp);
-let currentWeather = "Sunny";
+// Define findCoolPlacesNearUser in the global scope
+window.findCoolPlacesNearUser = async function() {
+  const userLocation = window.userLocation;
+  if (!userLocation) {
+    addBotMessage("I'm still waiting to get your location.");
+    return;
+  }
+
+  const map = new google.maps.Map(document.createElement("div"));
+  const service = new google.maps.places.PlacesService(map);
+  const request = {
+    location: new google.maps.LatLng(userLocation.lat, userLocation.lng),
+    radius: '5000',
+    keyword: 'park library cafe convenience store'
+  };
+
+  service.nearbySearch(request, (results, status) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK && results.length > 0) {
+      const placesLinks = results.map(place => {
+        const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${place.geometry.location.lat()},${place.geometry.location.lng()}`;
+        return `<a href="${googleMapsUrl}" target="_blank">${place.name}</a>`;
+      }).join("<br>");
+      addBotMessage(`Here are some places to cool down near you:<br>${placesLinks}`);
+    } else {
+      addBotMessage("I couldn't find any cool places nearby.");
+    }
+  });
+};
 
 // Initialize chatbot on page load
 document.addEventListener("DOMContentLoaded", function () {
-  
-  addBotMessage("Hello again 👋");
-  addBotMessage("Tell me if you are planning an event or finding cool spaces nearby.");
+  getUserLocation(); // Get the user's current location
   document.getElementById('sendButton').addEventListener('click', sendMessage);
 });
 
 // Function to send user message to bot
 async function sendMessage() {
   const input = document.getElementById('userInput').value;
-  console.log(input);
   if (input.trim() === '') return;
   addUserMessage(input);
 
   // Call OpenAI API for bot's response
-  const botResponse = await callOpenAiApi(input, openAiApiKey, userLocation, currentBodyTemp, currentWeather);
+  const botResponse = await callOpenAiApi(input, openAiApiKey);
 
   if (botResponse === 'show_date_picker') {
     document.getElementById('datePickerContainer').style.display = 'block';
@@ -34,21 +54,24 @@ async function sendMessage() {
 }
 
 // Function for OpenAI API call
-async function callOpenAiApi(input, apiKey, location, currentTemp, weather) {
+async function callOpenAiApi(input, apiKey) {
+  const userLocation = window.userLocation || "Central Coast, NSW, Australia"; // Default to Central Coast if location not obtained
+  const currentTemp = window.currentBodyTemp || "38°C"; // Use the global variable or default value
+
   // Prepare data for API call
   const data = {
     model: "gpt-4",  // Specify GPT-4 model
     messages: [
       {
         "role": "system",
-        "content": "You are a personalized heat mitigation strategist. Provide concise and personalised advice based on the user's request, utilising their real-time body temperature, location, and weather. Your responses must be within 40 words."
+        "content": "You are a helpful assistant. Answer questions accurately."
       },
       {
         "role": "user",
-        "content": `Current Body Temperature: ${currentTemp}\nCurrent Location: ${location}\nCurrent Weather: ${weather}\n${input}`
+        "content": input
       }
     ],
-    max_tokens: 50  // Limit to 50 tokens
+    max_tokens: 150
   };
 
   // Make API call
@@ -62,7 +85,7 @@ async function callOpenAiApi(input, apiKey, location, currentTemp, weather) {
     return response.data.choices[0].message.content.trim();
   } catch (error) {
     console.error(error);
-    return 'An error occurred.';
+    return 'I encountered an error while processing your request.';
   }
 }
 
@@ -71,7 +94,7 @@ function addBotMessage(text) {
   const messagesDiv = document.getElementById('messages');
   const message = document.createElement('div');
   message.className = 'bot';
-  message.textContent = text;
+  message.innerHTML = text; // Use innerHTML to parse the anchor tags
   messagesDiv.appendChild(message);
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
@@ -86,3 +109,40 @@ function addUserMessage(text) {
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
+// Function to get the user's current location
+function getUserLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        window.userLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        // After getting the location, wait for the Google Maps script to load before calling findCoolPlacesNearUser
+        waitForGoogleMaps().then(findCoolPlacesNearUser);
+      },
+      (error) => {
+        console.error("Error Code = " + error.code + " - " + error.message);
+        addBotMessage("Unable to retrieve your location. Please ensure location services are enabled.");
+      }
+    );
+  } else {
+    addBotMessage("Geolocation is not supported by your browser.");
+  }
+}
+
+// Utility function to wait for the Google Maps API to be loaded
+function waitForGoogleMaps() {
+  return new Promise((resolve) => {
+    if (typeof google !== 'undefined' && google.maps) {
+      resolve();
+    } else {
+      const checkGoogleMaps = setInterval(() => {
+        if (typeof google !== 'undefined' && google.maps) {
+          clearInterval(checkGoogleMaps);
+          resolve();
+        }
+      }, 100);
+    }
+  });
+}
