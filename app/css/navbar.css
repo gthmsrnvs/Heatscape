@@ -3,10 +3,6 @@ nav {
     display: flex;
     justify-content: space-around;
     background-color: var(--light);
-    position: fixed;
-    bottom: 0;
-    left: 0; /* Align to the left edge */
-    right: 0; /* Align to the right edge */
     border-top: 1px solid var(--light-grey);
     z-index: 1000; /* Ensure navbar is above other content */
 }
