@@ -69,6 +69,9 @@ function handleTemperatureChange(value) {
   // Update the temperature value on the page
   temperatureElement.innerText = `${tempAsFloat.toFixed(1)} °C`;
 
+  // Display the overheat popup panel when users are overheated
+  updateOverheatPopup();
+
   // If there is a previous temperature, calculate fluctuation and update display
   if (previousTemperature !== null) {
     const tempDifference = tempAsFloat - previousTemperature;
