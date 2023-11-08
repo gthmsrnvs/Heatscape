@@ -1,5 +1,5 @@
 // Replace this placeholder with your actual OpenAI API key
-const openAiApiKey = "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";
+const openAiApiKey = "AAsk-6t21iVmyIyKlTy891Ff1T3BlbkFJmdtgpzi1lzFMq6VUwoLD";
 
 // Define findCoolPlacesNearUser in the global scope
 window.findCoolPlacesNearUser = async function() {
@@ -64,7 +64,7 @@ async function callOpenAiApi(input, apiKey) {
     messages: [
       {
         "role": "system",
-        "content": "You are a helpful assistant. Answer questions accurately."
+        "content": "Based on the provided user data, generate a personalized plan for the next 2-3 hours to help the user cool down, taking into consideration the current high temperatures and the user's preferences. Offer a concise and smart guide including nearby locations that are cooler and less crowded, tips for avoiding heat stress, and any necessary precautions they should take given the UV index. If relevant, suggest hydration options and potential indoor activities that align with the user's preferences. You are a heat mitigation assistant that is helping the user to cool down and avoid heat stress. Your response must be within 30 words."
       },
       {
         "role": "user",
