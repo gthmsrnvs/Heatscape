@@ -1,11 +1,3 @@
-// import ScrollBooster from "scrollbooster";
-
-// new ScrollBooster({
-//   viewport: document.getElementById("weatherHourlyContainer"),
-//   scrollMode: "transform",
-//   direction: "horizontal",
-// });
-
 let selectedDate = 0;
 setupChangeDateBtn();
 setupWeatherPart();
@@ -82,6 +74,7 @@ async function setupWeatherPart() {
   await displayWeatherData(hour);
 }
 
+// Display the weather detail of the date users selected
 async function displayWeatherData(hour) {
   var weatherData = await fetchWeatherData();
   weatherData = weatherData[`day${selectedDate}`];
@@ -94,6 +87,8 @@ async function displayWeatherData(hour) {
   for (var i = 0; i < 24; i++) {
     const weather = weatherData[i];
     const now = (i == hr && selectedDate == 0) ? true : false;
+
+    // Pass the weather data and create the weather pills based on the selected date
     const child = generateWeatherTime(weather, i, now);
 
     // Change the background color based on the heat safety index
@@ -102,6 +97,7 @@ async function displayWeatherData(hour) {
     weatherTimeContainer.appendChild(child);
   }
 
+  // By default select the current time (if today is selected) or the first available pill of the selected date
   await selectWeatherElement(weatherData[hr], hr);
 }
 
@@ -254,6 +250,7 @@ function getWeatherRisk(weather, cardType, selected) {
   Object.keys(curRiskLst).forEach((level, i) => {
     const temp = curRiskLst[level];
     if (typeValue <= temp.value && !end) {
+      // If the weather pill is selected, generate the weather risk card with the caption as well
       if (selected) {
         const cardContainer = document.querySelector(
           `.weatherCardContainer[cardType='${cardType}']`
@@ -300,11 +297,6 @@ async function selectWeatherElement(weather, selectedTime) {
 }
 
 async function fetchWeatherData() {
-  // var geoLocation = getGeoLocation();
-  // if (!geoLocation) geoLocation = {latitude: -33.88899486497143, longitude: 151.19222097805516};
-  // console.log(`Latitude: ${geoLocation.latitude}, Longitude: ${geoLocation.longitude}`);
-
-  // const weatherData = await getWeatherAPI(geoLocation);
   const weatherData = await fetchJSONData("/json/weather.json");
   // console.log(weatherData);
 
@@ -322,30 +314,3 @@ async function fetchJSONData(jsonFileUrl) {
     console.error("Error fetching or parsing the JSON file: " + error);
   }
 }
-
-// Function to retrieve real weather data
-// function getGeoLocation() {
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(function(position) {
-//       const latitude = position.coords.latitude;
-//       const longitude = position.coords.longitude;
-//       return {latitude: latitude, longitude: longitude};
-//     });
-//   } else {
-//     console.log("Geolocation is not supported by this browser.");
-//     return;
-//   }
-// }
-
-// async function getWeatherAPI(geoLocation) {
-//   // This is working but freemium plan only allows 3 hrs forecast
-//   try {
-//     const response = await fetch('https://api.openweathermap.org/data/2.5/forecast?q=sydney&appid=50a7aa80fa492fa92e874d23ad061374');
-//     if (!response.ok) {throw new Error("Wrong city name!");}
-
-//     const data = await response.json();
-//     console.log(data);
-//   } catch (err) {
-//     alert(err.message);
-//   }
-// }
