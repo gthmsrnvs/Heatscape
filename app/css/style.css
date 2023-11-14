@@ -1,7 +1,8 @@
 /* Design variables */
 :root {
-  --mobile-width: 390px;
-  --mobile-height: 844px;
+  /* For development purpose, the width and height is set to similar ratio of iPhone 14 (390px X 844px) */
+  --mobile-width: 40vh;
+  --mobile-height: 90vh;
   --bottom-nav-height: 64px;
 
   --light: #fdfdfd;
