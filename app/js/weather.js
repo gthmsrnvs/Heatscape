@@ -70,7 +70,7 @@ async function setupWeatherPart() {
   const hour = date.getHours();
 
   const selectedDateDisplay = document.getElementById("weatherSelectedDate");
-  selectedDateDisplay.innerText = `${daysLst[date.getDay()]}, ${day} ${month} ${year}`;
+  selectedDateDisplay.innerText = `${daysLst[date.getDay()]}, ${day} ${month}`;
   await displayWeatherData(hour);
 }
 

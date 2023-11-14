@@ -236,7 +236,6 @@ body {
 
 /* Style for the connect button specifically */
 #connectButton {
-  width: 15%;
   max-width: 300px;
   display: block;
   background-color: var(--warning-caution); /* Use the caution color for the button */
@@ -507,6 +506,22 @@ button {
   display: grid;
   grid-template-columns: 50% 50%;
   row-gap: 16px;
+}
+
+@media screen and (max-height: 920px) and (hover: hover) {
+  #weatherCardsContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .weatherCardContainer {
+    width: 300px !important;
+    height: fit-content !important;
+  }
+
+  .weatherCardBottom {
+    padding-bottom: 12px;
+  }
 }
 
 .weatherCardContainer {
