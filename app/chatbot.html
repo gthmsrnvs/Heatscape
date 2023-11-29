@@ -18,8 +18,6 @@
       <div id="chatbox">
         <!-- Messages will be appended here -->
         <div id="messages"></div>
-        <!-- 3D robot icon -->
-        <canvas id="canvas3d" style="width: 50px; height: 50px;"></canvas>
         <!-- Date picker container -->
         <div id="datePickerContainer" style="display: none;"> <!-- Hide this initially -->
           <label for="datePicker">Pick a Date:</label>
@@ -40,7 +38,7 @@
   <script src="js/components.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!-- Include the Google Maps and Places API library -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzrnYY7CQgeesL1Q09zgdDRNhV9iwTpv8&libraries=places" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzrnYY7CQgeesL1Q09zgdDRNhV9iwTpv8&callback=initMap&libraries=places" async defer></script>
   <!-- Include your chat.js script -->
   <script type="module" src="js/chat.js"></script>
 </body>

@@ -279,6 +279,8 @@ body {
   width: 100%;
   max-width: 400px;
   margin: auto;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  overflow: hidden;
 }
 
 /* Style for messages container */
@@ -683,6 +685,12 @@ button {
   ); /* Set the width to match the mobile width variable */
   height: 150px; /* Set a fixed height for the chart */
   background-color: transparent; /* Ensure the background is transparent */
+}
+
+#map-container {
+  width: var(--mobile-width);
+  height: var(--mobile-height);
+  
 }
 
 /* Media query for devices with a width of 390px (iPhone 12 Pro portrait mode) */

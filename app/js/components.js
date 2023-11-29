@@ -9,19 +9,19 @@ navbar.innerHTML = `
         Home
     </span>
 </a>
-<a href="https://www.figma.com/proto/f08fZuaZlyEmnoRLUH5ViL/DECO3200-Iteration-6?type=design&node-id=23599-10980&t=weAImDsxgeXOZj9c-0&scaling=scale-down&page-id=5322%3A0&starting-point-node-id=23599%3A11821&show-proto-sidebar=1" class="navbarItem">
+<a href="chatbot.html" class="navbarItem">
     <i class="fa-solid fa-lightbulb"></i>
     <span>
         Help
     </span>
 </a>
-<a href="https://www.figma.com/proto/f08fZuaZlyEmnoRLUH5ViL/DECO3200-Iteration-6?type=design&node-id=22754-11634&t=QWBPD5fZL8SYN6QQ-0&scaling=scale-down&page-id=5322%3A0&starting-point-node-id=22675%3A5944" class="navbarItem">
+<a href="map.html" class="navbarItem">
     <i class="fa-solid fa-location-dot"></i>
     <span>
         Map
     </span>
 </a>
-<a href="https://www.figma.com/proto/f08fZuaZlyEmnoRLUH5ViL/DECO3200-Iteration-6?type=design&node-id=23578-11141&t=QWBPD5fZL8SYN6QQ-0&scaling=scale-down&page-id=5322%3A0" class="navbarItem">
+<a href="settings.html" class="navbarItem">
     <i class="fa-solid fa-gear"></i>
     <span>
         Settings

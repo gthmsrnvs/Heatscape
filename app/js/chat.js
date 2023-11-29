@@ -1,5 +1,5 @@
 // Replace this placeholder with your actual OpenAI API key
-const openAiApiKey = "AAsk-6t21iVmyIyKlTy891Ff1T3BlbkFJmdtgpzi1lzFMq6VUwoLD";
+const openAiApiKey = "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";
 
 // Define findCoolPlacesNearUser in the global scope
 window.findCoolPlacesNearUser = async function() {
@@ -55,7 +55,7 @@ async function sendMessage() {
 
 // Function for OpenAI API call
 async function callOpenAiApi(input, apiKey) {
-  const userLocation = window.userLocation || "Central Coast, NSW, Australia"; // Default to Central Coast if location not obtained
+  const userLocation = window.userLocation || "University of Sydney"; // Default to Central Coast if location not obtained
   const currentTemp = window.currentBodyTemp || "38°C"; // Use the global variable or default value
 
   // Prepare data for API call

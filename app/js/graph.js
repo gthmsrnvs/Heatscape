@@ -3,6 +3,24 @@ import { SmoothieChart, TimeSeries } from 'smoothie';
 
 // Global variable to store the previous temperature reading
 let previousTemperature = null;
+window.userLocation = { lat: null, lng: null };
+
+// Function to get the user's current location
+function getUserLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(position => {
+      window.userLocation.lat = position.coords.latitude;
+      window.userLocation.lng = position.coords.longitude;
+    }, error => {
+      console.error('Error getting location:', error);
+    });
+  } else {
+    console.error('Geolocation is not supported by this browser.');
+  }
+}
+
+// Call getUserLocation when the script loads
+getUserLocation();
 
 // Create a TimeSeries instance to store the data
 const temperatureTimeSeries = new TimeSeries();
@@ -18,7 +36,7 @@ const temperatureChart = new SmoothieChart({
   },
   labels: { fillStyle: '#FFFFFF' }, // Label color
   minValue: 20, // Minimum value for Y-axis
-  maxValue: 30, // Maximum value for Y-axis
+  maxValue: 40, // Maximum value for Y-axis
   millisPerPixel: 154, // Horizontal scale control
   horizontalLines: [
     { color: '#ffffff', lineWidth: 1, value: 15 },

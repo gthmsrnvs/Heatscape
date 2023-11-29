@@ -1,38 +1,36 @@
 nav {
-    width: 100%; /* Full width */
-    display: flex;
-    justify-content: space-around;
-    background-color: var(--light);
-    border-top: 1px solid var(--light-grey);
-    z-index: 1000; /* Ensure navbar is above other content */
+  width: 100%; /* Full width */
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--light);
+  border-top: 1px solid var(--light-grey);
+  z-index: 1000; /* Ensure navbar is above other content */
 }
 
-  
-  #activeItem {
-    color: var(--primary);
-    transform: scale(1.1); /* Slightly enlarge active item */
-    transition: transform 0.3s ease-in-out; /* Smooth transition for scaling */
-  }
-  
-  .navbarItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem 0;
-    color: var(--dark-grey); /* Updated to dark-grey for better contrast */
-    text-decoration: none;
-    font-size: 10pt;
-    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transition for color and transform */
-  }
-  
-  .navbarItem:active {
-    color: var(--primary); /* Change color to primary on tap */
-    transform: scale(0.95); /* Slightly shrink the item on tap for feedback */
-  }
-  
-  .navbarItem > i {
-    font-size: 20pt;
-    margin-bottom: 0.5rem;
-  }
-  
+#activeItem {
+  color: var(--primary);
+  transform: scale(1.1); /* Slightly enlarge active item */
+  transition: transform 0.3s ease-in-out; /* Smooth transition for scaling */
+}
+
+.navbarItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  color: var(--dark-grey); /* Updated to dark-grey for better contrast */
+  text-decoration: none;
+  font-size: 10pt;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transition for color and transform */
+}
+
+.navbarItem:active {
+  color: var(--primary); /* Change color to primary on tap */
+  transform: scale(0.95); /* Slightly shrink the item on tap for feedback */
+}
+
+.navbarItem > i {
+  font-size: 20pt;
+  margin-bottom: 0.5rem;
+}
