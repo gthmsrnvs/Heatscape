@@ -15,8 +15,9 @@
   --warning-caution: #f6b430;
   --warning-bad: #ca3925;
 
-  --normal-bg: linear-gradient(#71f5cd, #37cbdf);
-  --low-risk-bg: linear-gradient(#f6d86e, #edb13c);
+  --normal-bg: linear-gradient(#3ccaa0, #0eb2c8);
+  --low-risk-bg: linear-gradient(#8fc944, #caed3c);
+  --med-risk-bg: linear-gradient(#f6d86e, #edb13c);
   --high-risk-bg: linear-gradient(#e65c53, #f7a366);
 
   --primary: #f54932;
@@ -188,7 +189,7 @@ body {
 
 /* Homepage styles */
 #scrollContainer{
-  background: linear-gradient(to bottom, #de564c, #ff8c39); /* Orange gradient background */
+  background: var(--normal-bg); /* Orange gradient background */
   height: calc(var(--mobile-height) - var(--bottom-nav-height) - 12px);
   overflow: auto;
 }
