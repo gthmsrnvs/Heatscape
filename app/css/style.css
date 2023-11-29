@@ -350,7 +350,7 @@ button {
   margin-right: 5px;
 }
 
-.user::after {
+.user::before {
   content: "\f007";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
