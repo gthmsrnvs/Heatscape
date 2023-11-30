@@ -54,7 +54,7 @@ temperatureChart.addTimeSeries(temperatureTimeSeries, {
 // Call this function to start the chart streaming
 function startChart() {
   const canvas = document.getElementById('temperatureChart');
-  canvas.height = 150; // Set the height of the chart
+  canvas.height = 250; // Set the height of the chart
   canvas.width = window.innerWidth; // Set the width to match the screen width
   temperatureChart.streamTo(canvas, 1000); // Delay of 1000ms
 }
@@ -83,6 +83,7 @@ function handleTemperatureChange(value) {
   const temperatureElement = document.getElementById('temperatureValue');
   const riskLevelTextElement = document.getElementById('riskLevelText');
   const tempDirectionIconElement = document.getElementById('tempDirectionIcon');
+  const scrollContainerElement = document.getElementById("scrollContainer")
 
   // Update the temperature value on the page
   temperatureElement.innerText = `${tempAsFloat.toFixed(1)} °C`;
@@ -107,6 +108,27 @@ function handleTemperatureChange(value) {
 
   // Store the current temperature as the previous temperature for the next update
   previousTemperature = tempAsFloat;
+
+  switch (tempAsFloat) {
+    case (tempAsFloat < 36):
+      riskLevelTextElement.innerHTML = "Normal Temperature";
+      scrollContainerElement.style.background = "var(--normal-bg)";
+      break;
+    case (36 <= tempAsFloat < 37):
+      riskLevelTextElement.innerHTML = "Low Risk";
+      scrollContainerElement.style.background = "var(--low-risk-bg)";
+      break;
+    case (37 <= tempAsFloat < 38):
+      riskLevelTextElement.innerHTML = "Medium Risk";
+      scrollContainerElement.style.background = "var(--med-risk-bg)";
+      break;
+    case (tempAsFloat > 38):
+      riskLevelTextElement.innerHTML = "High Risk";
+      scrollContainerElement.style.background = "var(--high-risk-bg)";
+      break;        
+    default:
+      break;
+  }
 
   // Append new data point with current timestamp and temperature value
   temperatureTimeSeries.append(new Date().getTime(), tempAsFloat);
@@ -155,3 +177,6 @@ function updateOverheatPopup(currentTemperature) {
 }
 
 document.addEventListener('DOMContentLoaded', startChart);
+
+//Change the color of the background based on the temperature
+
