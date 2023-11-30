@@ -1,5 +1,5 @@
 // Replace this placeholder with your actual OpenAI API key
-const openAiApiKey = "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";
+const openAiApiKey = "AAsk-WaWTbKZzC5025mGTIDmiT3BlbkFJsQhK8a8IKjDN9sGsFpCW";
 
 // Define findCoolPlacesNearUser in the global scope
 window.findCoolPlacesNearUser = async function() {
@@ -36,22 +36,52 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById('sendButton').addEventListener('click', sendMessage);
 });
 
+// Function to show bot typing indicator
+function showBotTyping() {
+  const messagesDiv = document.getElementById('messages');
+  const typingIndicator = document.createElement('div');
+  typingIndicator.className = 'bot-typing-indicator';
+  typingIndicator.textContent = 'Heatscape is typing...';
+  messagesDiv.appendChild(typingIndicator);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+// Function to hide bot typing indicator
+function hideBotTyping() {
+  const typingIndicator = document.querySelector('.bot-typing-indicator');
+  if (typingIndicator) {
+      typingIndicator.remove();
+  }
+}
+
 // Function to send user message to bot
 async function sendMessage() {
   const input = document.getElementById('userInput').value;
   if (input.trim() === '') return;
   addUserMessage(input);
 
-  // Call OpenAI API for bot's response
-  const botResponse = await callOpenAiApi(input, openAiApiKey);
+  // Show bot typing indicator
+  showBotTyping();
 
-  if (botResponse === 'show_date_picker') {
-    document.getElementById('datePickerContainer').style.display = 'block';
-  } else {
-    addBotMessage(botResponse);
+  // Call OpenAI API for bot's response
+  try {
+      const botResponse = await callOpenAiApi(input, openAiApiKey);
+
+      // Hide bot typing indicator
+      hideBotTyping();
+
+      // Add bot's response to the chat
+      addBotMessage(botResponse);
+  } catch (error) {
+      console.error(error);
+      // Hide bot typing indicator in case of error
+      hideBotTyping();
+      addBotMessage('I encountered an error while processing your request.');
   }
+
   document.getElementById('userInput').value = '';
 }
+
 
 // Function for OpenAI API call
 async function callOpenAiApi(input, apiKey) {
@@ -64,7 +94,7 @@ async function callOpenAiApi(input, apiKey) {
     messages: [
       {
         "role": "system",
-        "content": "Based on the provided user data, generate a personalized plan for the next 2-3 hours to help the user cool down, taking into consideration the current high temperatures and the user's preferences. Offer a concise and smart guide including nearby locations that are cooler and less crowded, tips for avoiding heat stress, and any necessary precautions they should take given the UV index. If relevant, suggest hydration options and potential indoor activities that align with the user's preferences. You are a heat mitigation assistant that is helping the user to cool down and avoid heat stress. Your response must be within 30 words."
+        "content": "Based on the location of University of Sydney, generate a personalized plan for the next 2-3 hours to help the user cool down, taking into consideration the current high temperatures and the user's preferences. Offer a concise and smart guide including nearby locations that are cooler and less crowded, tips for avoiding heat stress, and any necessary precautions they should take given the UV index. If relevant, suggest hydration options and potential indoor activities that align with the user's preferences. You are a heat mitigation assistant that is helping the user to cool down and avoid heat stress. Your response must be within 50 words. you also have the ability to provide a detailed daily plan for the user to follow using emojis and within the 50 words, you can plan for future events using your knowledge of the location and by guessing the weather conditions for that day."
       },
       {
         "role": "user",
