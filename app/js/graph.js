@@ -82,15 +82,48 @@ function handleTemperatureChange(value) {
   const tempAsFloat = value.getFloat32(0, true);
   console.log(tempAsFloat);
   const temperatureElement = document.getElementById('temperatureValue');
+  console.log(temperatureElement.innerHTML)
   const riskLevelTextElement = document.getElementById('riskLevelText');
   const tempDirectionIconElement = document.getElementById('tempDirectionIcon');
   const scrollContainerElement = document.getElementById("scrollContainer")
 
+  if (temperatureElement.innerHTML < 36) {
+    riskLevelTextElement.innerHTML = "Normal Temperature";
+    scrollContainerElement.style.background = "var(--normal-bg)";
+  } else if (temperatureElement.innerHTML < 37) {
+    riskLevelTextElement.innerHTML = "Low Risk";
+    scrollContainerElement.style.background = "var(--low-risk-bg)";
+  } else if (temperatureElement.innerHTML < 38) {
+    riskLevelTextElement.innerHTML = "Medium Risk";
+    scrollContainerElement.style.background = "var(--med-risk-bg)";
+  }else if (temperatureElement.innerHTML < 40) {
+    riskLevelTextElement.innerHTML = "High Risk";
+    scrollContainerElement.style.background = "var(--high-risk-bg)";
+  }
+
   // Update the temperature value on the page
-  temperatureElement.innerText = `${tempAsFloat.toFixed(1)} °C`;
+  temperatureElement.innerText = `${tempAsFloat.toFixed(1)}`;
 
   // Display the overheat popup panel when users are overheated
   updateOverheatPopup();
+
+  // If there is a previous temperature, calculate fluctuation and update display
+  if (previousTemperature !== null) {
+    const tempDifference = tempAsFloat - previousTemperature;
+    updateFluctuationDisplay(tempAsFloat); // Call the function to update the fluctuation display
+
+    // Update the direction of the temperature change
+    if (tempDifference > 0) {
+      tempDirectionIconElement.className = 'fas fa-arrow-up';
+    } else if (tempDifference < 0) {
+      tempDirectionIconElement.className = 'fas fa-arrow-down';
+    } else {
+      tempDirectionIconElement.className = ''; // No change
+    }
+  }
+
+  // Store the current temperature as the previous temperature for the next update
+  previousTemperature = tempAsFloat;
 
   switch (tempAsFloat) {
     case (tempAsFloat < 36):
@@ -112,24 +145,6 @@ function handleTemperatureChange(value) {
     default:
       break;
   }
-
-  // If there is a previous temperature, calculate fluctuation and update display
-  if (previousTemperature !== null) {
-    const tempDifference = tempAsFloat - previousTemperature;
-    updateFluctuationDisplay(tempAsFloat); // Call the function to update the fluctuation display
-
-    // Update the direction of the temperature change
-    if (tempDifference > 0) {
-      tempDirectionIconElement.className = 'fas fa-arrow-up';
-    } else if (tempDifference < 0) {
-      tempDirectionIconElement.className = 'fas fa-arrow-down';
-    } else {
-      tempDirectionIconElement.className = ''; // No change
-    }
-  }
-
-  // Store the current temperature as the previous temperature for the next update
-  previousTemperature = tempAsFloat;
 
   // Append new data point with current timestamp and temperature value
   temperatureTimeSeries.append(new Date().getTime(), tempAsFloat);
