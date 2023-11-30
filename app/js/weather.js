@@ -154,24 +154,24 @@ const riskLst = {
   },
   wind: {
     safe: {
-      display: "Cooler Wind",
+      display: "Cool Wind",
       caption: "Enjoyable Outdoor Weather",
       value: 3,
     },
     caution: {
-      display: "Warmer Wind",
+      display: "Less Wind",
       caption: "Uncomfortable Outdoor Weather",
       value: 6,
     },
     danger: {
-      display: "Very Hot Wind",
+      display: "No Wind",
       caption: "Dangerous Outdoor Weather",
       value: 9,
     },
   },
   humidity: {
     safe: {
-      caption: "Stay hydrated to regulate your body temperature ",
+      caption: "Stay hydrated regularly",
       value: 60,
     },
     caution: {
@@ -179,7 +179,7 @@ const riskLst = {
       value: 80,
     },
     danger: {
-      caption: "Stay indoors to take extra precautions for wellbeing",
+      caption: "Stay indoors and prevent going outdoors",
       value: 100,
     },
   },
@@ -271,9 +271,9 @@ function getWeatherRisk(weather, cardType, selected) {
 // Function that is triggered when the users select any pills to show the related weather cards info
 async function selectWeatherElement(weather, selectedTime) {
   const heatSafetyIndex = {
-    safe: "<p>Safe</p> <span>Suitable for Outdoor Activity</span>",
-    caution: "<p>Caution</p> <span>Aware of overheated</span>",
-    danger: "<p>Danger</p> <span>Avoid outdoor activities</span>",
+    safe: "<h1>Safe</h1><br><span>Suitable for Outdoor Activity</span>",
+    caution: "<h1>Caution</h1><br><span>Aware of overheated</span>",
+    danger: "<h1>Danger</h1><br><span>Avoid outdoor activities</span>",
   };
 
   const allPills = document.querySelectorAll(".weatherHourlyPills");
@@ -281,7 +281,7 @@ async function selectWeatherElement(weather, selectedTime) {
   allPills[selectedTime].classList.add("selected");
 
   const condition = allPills[selectedTime].getAttribute("weatherCondition");
-  document.getElementById("weatherContainer").style.backgroundImage = `url("/images/${condition}.png")`;
+  //document.getElementById("weatherContainer").style.backgroundImage = `url("/images/${condition}.png")`;
 
   const weatherTimeContainer = document.getElementById("weatherHourlyInner");
   const selectedElement = weatherTimeContainer.querySelector(`:nth-child(${selectedTime + 1})`);

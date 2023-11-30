@@ -54,7 +54,7 @@ temperatureChart.addTimeSeries(temperatureTimeSeries, {
 // Call this function to start the chart streaming
 function startChart() {
   const canvas = document.getElementById('temperatureChart');
-  canvas.height = 150; // Set the height of the chart
+  canvas.height = 250; // Set the height of the chart
   canvas.width = window.innerWidth; // Set the width to match the screen width
   temperatureChart.streamTo(canvas, 1000); // Delay of 1000ms
 }

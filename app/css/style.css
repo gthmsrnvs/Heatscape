@@ -364,8 +364,7 @@ button {
   flex-direction: column;
   gap: 24px;
 
-  background-image: none;
-  background-repeat: no-repeat;
+  background: var(--light);
   background-size: 100vw;
 
 
@@ -379,25 +378,29 @@ button {
   position: sticky;
   top: 0;
 
-  background-color: var(--dark-grey);
-  color: white;
+  background-color: var(--light);
+  color: var(--dark);
 
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12px;
 
-  padding: 12px;
+  padding: 1rem 2rem;
   z-index: 1;
 }
 
 .weatherDateButton {
   position: absolute;
-  color: white;
+  color: var(--dark);
 }
 
 .weatherDateButton.disabled {
   opacity: 0.3;
+}
+
+#weatherSelectedDate {
+  font-weight: 600;
 }
 
 #weatherHourlyContainer {
@@ -424,22 +427,23 @@ button {
   align-items: center;
 
   border-radius: 100vh;
-  color: white;
+  color: var(--light);
 
-  opacity: 0.65;
+  opacity: 0.35;
   transition: opacity 0.2s ease;
+
 }
 
 .weatherHourlyPills.safe {
-  background-color: var(--warning-good);
+  background: var(--normal-bg);
 }
 
 .weatherHourlyPills.caution {
-  background-color: var(--warning-caution);
+  background: var(--med-risk-bg);
 }
 
 .weatherHourlyPills.danger {
-  background-color: var(--warning-bad);
+  background: var(--high-risk-bg);
 }
 
 .weatherHourlyPills.selected {
@@ -469,15 +473,15 @@ button {
 }
 
 #weatherHeatIndexContainer {
-  background-color: var(--warning-good);
+  background: var(--normal-bg);
 }
 
 #weatherHeatIndexContainer[riskLevel="caution"] {
-  background-color: var(--warning-caution);
+  background: var(--med-risk-bg);
 }
 
 #weatherHeatIndexContainer[riskLevel="danger"] {
-  background-color: var(--warning-bad);
+  background: var(--high-risk-bg);
 }
 
 #weatherHeatIndexInner {
@@ -504,31 +508,29 @@ button {
 }
 
 #weatherCardsContainer {
-  width: 90%;
-  margin: 0 auto 32px;
 
-  display: grid;
-  grid-template-columns: 50% 50%;
-  row-gap: 16px;
 }
 
 .weatherCardContainer {
   width: var(--weather-card-width);
   height: var(--weather-card-width);
   border-radius: 16px;
-
+  padding: 1px;
   margin: auto;
 }
 
 @media screen and (max-height: 920px) and (hover: hover) {
   #weatherCardsContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .weatherCardContainer {
-    width: 100% !important;
-    height: fit-content !important;
+    width: 45%;
+    height: auto;
+
+    margin: 5px auto;
   }
 
   .weatherCardBottom {
@@ -541,15 +543,15 @@ button {
 }
 
 .weatherCardContainer[cardRisk="safe"] {
-  background: var(--warning-good);
+  background: var(--normal-bg);
 }
 
 .weatherCardContainer[cardRisk="caution"] {
-  background: var(--warning-caution);
+  background: var(--med-risk-bg);
 }
 
 .weatherCardContainer[cardRisk="danger"] {
-  background: var(--warning-bad);
+  background: var(--high-risk-bg);
 }
 
 .weatherCardInner {
@@ -587,12 +589,19 @@ button {
   gap: 12px;
 }
 
-.weatherCardBottom > h1 {
-  font-size: 36px;
+.weatherCardBottom > h1,
+#heatIndexBottom > h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+#heatIndexBottom > h1 {
+  font-size: 4rem;
 }
 
 .weatherCardBottom > h2 {
-  font-size: 28px;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .weatherCardBottom > h3 {
@@ -700,4 +709,8 @@ button {
     width: 100%; /* Make the chart width responsive */
     height: 150px; /* Maintain a fixed height for consistency */
   }
+}
+
+#temp_title {
+  font-size: 0.7rem;
 }
