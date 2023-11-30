@@ -80,6 +80,7 @@ function handleTemperatureChange(value) {
     return;
   }
   const tempAsFloat = value.getFloat32(0, true);
+  console.log(tempAsFloat);
   const temperatureElement = document.getElementById('temperatureValue');
   const riskLevelTextElement = document.getElementById('riskLevelText');
   const tempDirectionIconElement = document.getElementById('tempDirectionIcon');
@@ -90,24 +91,6 @@ function handleTemperatureChange(value) {
 
   // Display the overheat popup panel when users are overheated
   updateOverheatPopup();
-
-  // If there is a previous temperature, calculate fluctuation and update display
-  if (previousTemperature !== null) {
-    const tempDifference = tempAsFloat - previousTemperature;
-    updateFluctuationDisplay(tempAsFloat); // Call the function to update the fluctuation display
-
-    // Update the direction of the temperature change
-    if (tempDifference > 0) {
-      tempDirectionIconElement.className = 'fas fa-arrow-up';
-    } else if (tempDifference < 0) {
-      tempDirectionIconElement.className = 'fas fa-arrow-down';
-    } else {
-      tempDirectionIconElement.className = ''; // No change
-    }
-  }
-
-  // Store the current temperature as the previous temperature for the next update
-  previousTemperature = tempAsFloat;
 
   switch (tempAsFloat) {
     case (tempAsFloat < 36):
@@ -129,6 +112,24 @@ function handleTemperatureChange(value) {
     default:
       break;
   }
+
+  // If there is a previous temperature, calculate fluctuation and update display
+  if (previousTemperature !== null) {
+    const tempDifference = tempAsFloat - previousTemperature;
+    updateFluctuationDisplay(tempAsFloat); // Call the function to update the fluctuation display
+
+    // Update the direction of the temperature change
+    if (tempDifference > 0) {
+      tempDirectionIconElement.className = 'fas fa-arrow-up';
+    } else if (tempDifference < 0) {
+      tempDirectionIconElement.className = 'fas fa-arrow-down';
+    } else {
+      tempDirectionIconElement.className = ''; // No change
+    }
+  }
+
+  // Store the current temperature as the previous temperature for the next update
+  previousTemperature = tempAsFloat;
 
   // Append new data point with current timestamp and temperature value
   temperatureTimeSeries.append(new Date().getTime(), tempAsFloat);

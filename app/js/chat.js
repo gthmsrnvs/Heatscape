@@ -1,5 +1,5 @@
 // Replace this placeholder with your actual OpenAI API key
-const openAiApiKey = "AAsk-WaWTbKZzC5025mGTIDmiT3BlbkFJsQhK8a8IKjDN9sGsFpCW";
+const openAiApiKey = "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";
 
 // Define findCoolPlacesNearUser in the global scope
 window.findCoolPlacesNearUser = async function() {
